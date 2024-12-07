@@ -7,7 +7,7 @@ namespace NeuroWeb.EXMPL.SCRIPTS
     {
         public int Predict(string number) {
             const string numberPath = 
-                @"C:\\Users\\11adyy\\RiderProjects\\NeuroWeb.EXMPL\\NeuroWeb.EXMPL\\DATA\\References.txt";
+                @"C:\\Users\\11adyy\\RiderProjects\\NeuroWeb.EXMPL\\NeuroWeb.EXMPL\\DATA\\TestNumber.txt";
             var data = DataWorker.ReadNetworkConfig(@"C:\\Users\\11adyy\\RiderProjects\\NeuroWeb.EXMPL\\" +
                                                     @"NeuroWeb.EXMPL\\DATA\\Config.txt");
             var network = new Network(data);
@@ -16,9 +16,13 @@ namespace NeuroWeb.EXMPL.SCRIPTS
 
             var count = 1;
             var dataInformation = DataWorker.ReadData(numberPath, ref data, ref count);
+            var right = dataInformation[0].Digit;
             
             network.InsertInformation(dataInformation[0].Pixels);
             var prediction = network.ForwardFeed();
+
+            if (!right.Equals((int)prediction))
+                network.BackPropagation(right);
             
             return (int)prediction;
         }
