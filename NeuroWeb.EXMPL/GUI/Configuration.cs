@@ -7,7 +7,7 @@ using Microsoft.Win32;
 namespace NeuroWeb.EXMPL.Gui {
     public static class Configuration {
         public static void WriteConfig(Grid configGrid, int size) {
-            var tempConfig = $"Network {size}\n";
+            var tempConfig = $"NetWork {size}\n";
             var tempArray = new List<int>();
             
             foreach (var element in configGrid.Children) {
@@ -27,7 +27,7 @@ namespace NeuroWeb.EXMPL.Gui {
 
             for (var i = 0; i < tempArray.Count - 1; i++) {
                 if (tempArray[i] >= tempArray[i + 1]) continue;
-                MessageBox.Show("Некоректные размерности внутренних слоёв. Идут не по убыванию!");
+                MessageBox.Show("Некоректные размерности скрытыхte слоёв. Идут не по убыванию!");
                 break;
             }
 
