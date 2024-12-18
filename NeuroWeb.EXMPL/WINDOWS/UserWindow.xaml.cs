@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -14,6 +13,8 @@ using Microsoft.Win32;
 
 using NeuroWeb.EXMPL.OBJECTS;
 using NeuroWeb.EXMPL.SCRIPTS;
+using System.IO;
+using System.Reflection;
 
 namespace NeuroWeb.EXMPL.WINDOWS {
     public partial class User {
