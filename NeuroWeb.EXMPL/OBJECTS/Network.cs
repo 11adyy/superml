@@ -45,8 +45,7 @@ namespace NeuroWeb.EXMPL.OBJECTS {
                 for (var i = 0; i < NeuronsBios.Length; i++) NeuronsBios[i] = 1;
             }
             catch (Exception e) {
-                MessageBox.Show($"{e}","Сбой инициализации сети!", MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                MessageBox.Show($"{e}","Сбой инициализации сети!");
                 throw;
             }
         }
@@ -80,8 +79,7 @@ namespace NeuroWeb.EXMPL.OBJECTS {
                 return prediction;
             }
             catch (Exception e) {
-                MessageBox.Show($"{e}","Сбой получения максимального индекса!", MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                MessageBox.Show($"{e}","Сбой получения максимального индекса!");
                 throw;
             }
         }
@@ -96,8 +94,7 @@ namespace NeuroWeb.EXMPL.OBJECTS {
                 return GetMaxIndex(NeuronsValue[Layouts - 1]);
             }
             catch (Exception e) {
-                MessageBox.Show($"{e}","Сбой активации нейронов!", MessageBoxButton.OK,
-                     MessageBoxImage.Error);
+                MessageBox.Show($"{e}","Сбой активации нейронов!");
                 throw;
             }
         }
@@ -118,8 +115,7 @@ namespace NeuroWeb.EXMPL.OBJECTS {
                 }
             }
             catch (Exception e) {
-                MessageBox.Show($"{e}","Сбой обратного обучения!", MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                MessageBox.Show($"{e}","Сбой обратного обучения!");
                 throw;
             }
         }
@@ -166,8 +162,7 @@ namespace NeuroWeb.EXMPL.OBJECTS {
                 MessageBox.Show("Веса обновлены!");
             }
             catch (Exception e) {
-                MessageBox.Show($"{e}","Сбой при записи весов!", MessageBoxButton.OK, 
-                    MessageBoxImage.Error);
+                MessageBox.Show($"{e}","Сбой при записи весов!");
                 throw;
             }
         }
@@ -192,8 +187,7 @@ namespace NeuroWeb.EXMPL.OBJECTS {
 
             }
             catch (Exception e) {
-                MessageBox.Show($"{e}","Сбой при чтении весов!", MessageBoxButton.OK, 
-                    MessageBoxImage.Error);
+                MessageBox.Show($"{e}","Сбой при чтении весов!");
                 throw;
             }
         }

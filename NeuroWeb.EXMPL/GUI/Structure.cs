@@ -125,8 +125,7 @@ namespace NeuroWeb.EXMPL.Gui {
 
             }
             catch (Exception exception) {
-                MessageBox.Show($"{exception}", "Ошибка создания интерфейса!", MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                MessageBox.Show($"{exception}");
             }
             return null;
         }

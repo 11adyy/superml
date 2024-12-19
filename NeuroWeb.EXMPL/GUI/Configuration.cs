@@ -33,7 +33,9 @@ namespace NeuroWeb.EXMPL.Gui {
             }
 
             var openFile = new SaveFileDialog();
-            if (openFile.ShowDialog() == true) File.WriteAllText(openFile.FileName, tempConfig);
+            if (openFile.ShowDialog() == true) {
+                File.WriteAllText(openFile.FileName, tempConfig);
+            }
         }
     }
 }

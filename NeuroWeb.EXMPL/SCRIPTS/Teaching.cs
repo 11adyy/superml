@@ -20,8 +20,7 @@ namespace NeuroWeb.EXMPL.SCRIPTS {
                 network.SetWeights(.08);
             }
             catch (Exception e) {
-                MessageBox.Show($"{e}", "Ошибка при обучении!", MessageBoxButton.OK, 
-                    MessageBoxImage.Error);
+                MessageBox.Show($"{e}", "Ошибка при обучении!");
                 throw;
             }
         }
@@ -65,8 +64,7 @@ namespace NeuroWeb.EXMPL.SCRIPTS {
                 network.SaveWeights();
             }
             catch (Exception e) {
-                MessageBox.Show($"{e}", "Ошибка при глубоком обучении!", MessageBoxButton.OK, 
-                    MessageBoxImage.Error);
+                MessageBox.Show($"{e}", "Ошибка при глубоком обучении!");
                 throw;
             }
         }
