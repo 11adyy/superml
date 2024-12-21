@@ -120,11 +120,6 @@
                   Cursor="Hand"
                   ToolTip="Загрузить файл и начать полное обучение"
                   MouseDown="HardTeaching"></Image>   
-           <Label HorizontalAlignment="Right"
-                  VerticalAlignment="Bottom"
-                  Margin="0,0,75,90"
-                  FontSize="20"
-                  FontFamily="Times New Roman"> - Структура - </Label>
            <Image Source="../IMAGES/TeacherWindow/Кнопка_Закрыть.png"
                   Stretch="Fill"
                   Height="35"
@@ -133,6 +128,6 @@
                   Margin="0,370,50,0"
                   Cursor="Hand"
                   ToolTip="Закрыть и сохранить конфигурацию"
-                  MouseDown="SaveStructure"></Image>   
+                  MouseDown="CloseTeacher"></Image>   
     </Grid>
 </Window>
