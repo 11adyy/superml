@@ -32,7 +32,7 @@ namespace NeuroWeb.EXMPL.SCRIPTS {
         }
         
         public static Tensor Activation(Tensor tensor) {
-            foreach (var matrix in tensor.Channels) {
+            foreach (var matrix in tensor.Body) {
                for (var i = 0; i < matrix.Body.GetLength(0); i++) 
                    for (var j = 0; j < matrix.Body.GetLength(1); j++) 
                        switch (matrix.Body[i,j]) {
