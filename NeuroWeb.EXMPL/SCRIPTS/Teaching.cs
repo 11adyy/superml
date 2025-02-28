@@ -9,9 +9,10 @@ using NeuroWeb.EXMPL.OBJECTS.CONVOLUTION;
 
 namespace NeuroWeb.EXMPL.SCRIPTS {
     public static class Teaching {
-        public static void LightStudying(Network network, Tensor data, int expected) {
+        public static void LightStudying(Network network, double[,] number, int expected) {
             try {
-                network.InsertInformation(data);
+                //var dataInformation = DataWorker.ReadData(number, network.Configuration);
+                network.InsertInformation(new Tensor(new Matrix(number)));
                 
                 var prediction = network.ForwardFeed();
                 if (expected.Equals(prediction)) return;
@@ -38,20 +39,21 @@ namespace NeuroWeb.EXMPL.SCRIPTS {
                 var file = new OpenFileDialog();
                 if (file.ShowDialog() != true) return;
                 
-                var dataInformation = DataWorker.ReadNumber(file.FileName, network.Configuration, ref examples);
+                var dataInformation = DataWorker.ReadData(file.FileName, network.Configuration, ref examples);
                 
                 MessageBox.Show($"Загруженно приверов: {examples}\n");
                 while (rightAnswersCount / examples * 100 < 100) {
                     rightAnswersCount = 0;
                     for (var i = 0; i < examples; ++i) {
                         network.InsertInformation(dataInformation[i]);
+                        double right = dataInformation[i].Digit;
                         
-                        var right = dataInformation[i].Digit;
-                        var prediction = network.ForwardFeed();
-                        
-                        if (prediction != right) 
-                            network.BackPropagation(right, .15d * Math.Exp(-era / 20d));
-                        else rightAnswersCount++;
+                        //var prediction = network.ForwardFeed();
+                        //if (!prediction.Equals(right)) {
+                          //  network.ForwardBackPropagation(right);
+                         //   network.SetForwardWeights(.15d * Math.Exp(-era / 20d));
+                       // }
+                        //else rightAnswersCount++;
                     }
                     if (rightAnswersCount > maxRightAnswers) maxRightAnswers = rightAnswersCount;
                     MessageBox.Show($"Правильно: {Math.Round(rightAnswersCount / examples * 100, 3)}%\n" +

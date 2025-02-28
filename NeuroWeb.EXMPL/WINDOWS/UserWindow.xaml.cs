@@ -21,7 +21,38 @@ namespace NeuroWeb.EXMPL.WINDOWS {
     public partial class User {
         public User() {
             try {
-                //var defaultConfig = Properties.Resources.defaultConfig;
+                var defaultConfig = Properties.Resources.defaultConfig;
+
+                var config = new Configuration {
+                    ConvolutionConfigurations = new ConvolutionConfiguration[3],
+                    ConvolutionLayouts = 3,
+                    ForwardLayout = 3,
+                    NeuronsLayer = new[]{288, 144, 10}
+                };
+                config.ConvolutionConfigurations[0] = new ConvolutionConfiguration {
+                    FilterColumn = 3,
+                    FilterRow = 3,
+                    FilterCount = 2,
+                    PoolSize = 2,
+                    Stride = 1,
+                    FilterDepth = 2
+                };
+                config.ConvolutionConfigurations[1] = new ConvolutionConfiguration {
+                    FilterColumn = 3,
+                    FilterRow = 3,
+                    FilterCount = 2,
+                    PoolSize = 2,
+                    Stride = 1,
+                    FilterDepth = 4
+                };
+                config.ConvolutionConfigurations[2] = new ConvolutionConfiguration {
+                    FilterColumn = 3,
+                    FilterRow = 3,
+                    FilterCount = 2,
+                    PoolSize = 2,
+                    Stride = 1,
+                    FilterDepth = 8
+                };
                 /*
                 if (MessageBox.Show("Использовать стандартную конфигарацию вместо другой?", 
                         "Укажите конфигурацию!", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
@@ -37,7 +68,7 @@ namespace NeuroWeb.EXMPL.WINDOWS {
                               MessageBoxImage.Error);
                 }
                 */
-                Network = new Network(DataWorker.ReadNetworkConfig(File.ReadAllText(@"C:\Users\11adyy\RiderProjects\NeuroWeb.EXMPL\NeuroWeb.EXMPL\DATA\Config.txt")));
+                Network = new Network(config);
                 InitializeComponent();
                 
                 Answers = new List<Label> {
@@ -135,7 +166,7 @@ namespace NeuroWeb.EXMPL.WINDOWS {
             Update.IsEnabled = false;
             if (int.TryParse(ExpectedAnswer.Text, out var number)) {
                 ExpectedAnswer.Text = "";
-                Teaching.LightStudying(Network, new Tensor(new Matrix(Number)), number);
+                Teaching.LightStudying(Network, Number, number);
             }
             else MessageBox.Show("Введённое число не корректно!");
             
