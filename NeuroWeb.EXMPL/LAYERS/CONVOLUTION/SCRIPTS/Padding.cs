@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using NeuroWeb.EXMPL.OBJECTS;
 using NeuroWeb.EXMPL.OBJECTS.MATH;
 using NeuroWeb.EXMPL.OBJECTS.NETWORK;
 
-namespace NeuroWeb.EXMPL.SCRIPTS.CONVOLUTION {
+namespace NeuroWeb.EXMPL.LAYERS.CONVOLUTION.SCRIPTS {
     internal static class Padding {
         private static Matrix GetPadding(Matrix matrix, int paddingSize) {
             var newMatrix = new Matrix(matrix.Body.GetLength(0) + paddingSize * 2, matrix.Body.GetLength(0) + paddingSize * 2);

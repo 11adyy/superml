@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using NeuroWeb.EXMPL.OBJECTS.MATH;
 
-namespace NeuroWeb.EXMPL.OBJECTS.NETWORK {
+namespace NeuroWeb.EXMPL.OBJECTS {
     public class Tensor {
         public Tensor(Matrix matrix) => Channels = new List<Matrix> { matrix };
         
@@ -50,7 +49,7 @@ namespace NeuroWeb.EXMPL.OBJECTS.NETWORK {
                 matrix.Add(Channels[i]);
                 for (var x = 0; x < Channels[i].Body.GetLength(0); x++) {
                     for (var y = 0; y < Channels[i].Body.GetLength(1); y++) {
-                        matrix[^1].Body[x,y] = Math.Min(Channels[i].Body[x, y], Channels[i + 1].Body[x, y]);
+                        matrix[^1].Body[x,y] = Math.Max(Channels[i].Body[x, y], Channels[i + 1].Body[x, y]);
                     }
                 }
             }

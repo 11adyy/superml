@@ -1,6 +1,7 @@
-﻿using NeuroWeb.EXMPL.OBJECTS.NETWORK;
+﻿using NeuroWeb.EXMPL.OBJECTS;
+using NeuroWeb.EXMPL.OBJECTS.NETWORK;
 
-namespace NeuroWeb.EXMPL.INTERFACES {
+namespace NeuroWeb.EXMPL.LAYERS.INTERFACES {
     public interface ILayer {
         public Tensor GetNextLayer(Tensor tensor);
         public Tensor BackPropagate(Tensor error);
