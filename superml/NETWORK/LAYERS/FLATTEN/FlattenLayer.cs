@@ -1,16 +1,13 @@
 ﻿using superml.NETWORK.LAYERS.INTERFACES;
 using superml.NETWORK.OBJECTS;
 
-namespace superml.NETWORK.LAYERS.FLATTEN
-{
-    public class FlattenLayer : ILayer
-    {
-        private Tensor _inputTensor;
+namespace superml.NETWORK.LAYERS.FLATTEN {
+    public class FlattenLayer : ILayer {
+        private Tensor _inputTensor = new Tensor(new Matrix(0,0));
 
         public Tensor GetValues() => _inputTensor;
 
-        public Tensor GetNextLayer(Tensor tensor)
-        {
+        public Tensor GetNextLayer(Tensor tensor) {
             _inputTensor = tensor;
             return new Vector(tensor.Flatten().ToArray()).AsTensor(1, tensor.Flatten().Count, 1);
         }
