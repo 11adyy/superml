@@ -1,5 +1,4 @@
-﻿using System;
-using superml.NETWORK.ACTIVATION.INTERFACES;
+﻿using superml.NETWORK.ACTIVATION.INTERFACES;
 using superml.NETWORK.OBJECTS;
 
 namespace superml.NETWORK.ACTIVATION.SIGMOID {
