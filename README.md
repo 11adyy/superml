@@ -1,5 +1,5 @@
 # superml
-superml is a simple library for working with **CONVOLUTION NEURON NETWORKS** and **CLASSIC NEURON Networks** like **PERCEPTRON**.
+superml is a simple library for working with **CONVOLUTION NEURON NETWORKS** and **CLASSIC NEURON NETWORKS** like **PERCEPTRON**.
 The main future is that u can create ur own neuron network without libraries that takes all work. This project is open source and u can see a code, understand him.
 
 ### Introduction:
