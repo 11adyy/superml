@@ -1,17 +1,17 @@
-﻿using superml.NETWORK.ACTIVATION;
+﻿using superml.NETWORK.ACTIVATION.INTERFACES;
 using superml.NETWORK.LAYERS.INTERFACES;
 using superml.NETWORK.MATH;
 using superml.NETWORK.OBJECTS;
 
 namespace superml.NETWORK {
     public class Network {
-        public Network(List<ILayer> layers, Function lossFunction) {
+        public Network(List<ILayer> layers, IFunction lossFunction) {
             Layers       = layers;
             MainFunction = lossFunction;
         }
 
         private List<ILayer> Layers { get; }
-        private Function MainFunction { get; }
+        private IFunction MainFunction { get; }
 
         public Tensor GetLayerData(int layer) => Layers[layer].GetValues();
         
