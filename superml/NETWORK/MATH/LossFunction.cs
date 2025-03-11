@@ -1,9 +1,9 @@
-﻿using superml.NETWORK.ACTIVATION.INTERFACES;
+﻿using superml.NETWORK.ACTIVATION;
 using superml.NETWORK.OBJECTS;
 
 namespace superml.NETWORK.MATH {
     public static class LossFunction {
-        public static Tensor GetErrorTensor(Tensor outputTensor, int expectedClass, IFunction activateFunction) {
+        public static Tensor GetErrorTensor(Tensor outputTensor, int expectedClass, Function activateFunction) {
             var prediction = outputTensor.Channels[0].GetAsList().ToArray();
             var error = new List<double>();
 
