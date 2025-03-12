@@ -1,17 +1,20 @@
-﻿using superml.NETWORK.ACTIVATION;
-using superml.NETWORK.OBJECTS;
+﻿using superml.NETWORK.OBJECTS;
 
 namespace superml.NETWORK.MATH {
     public static class LossFunction {
-        public static Tensor GetErrorTensor(Tensor outputTensor, int expectedClass, Function activateFunction) {
+        public static Tensor GetErrorTensor(Tensor outputTensor, int expectedClass) {
             var prediction = outputTensor.Channels[0].GetAsList().ToArray();
             var error = new List<double>();
 
             for (var i = 0; i < prediction.Length; i++)
-                if (i != expectedClass) error.Add(-activateFunction.Derivation(prediction[i]));
-                else error.Add(1.0 - activateFunction.Derivation(prediction[i]));
-
+                if (i != expectedClass) error.Add(-Derivation(prediction[i], 0));
+                else error.Add(-Derivation(prediction[i], 1));
+            
             return new Vector(error.ToArray()).AsTensor(1, error.Count, 1);
+        }
+
+        private static double Derivation(double prediction, double expected) {
+            return prediction * (1 - prediction) * (expected - prediction);
         }
     }
 }

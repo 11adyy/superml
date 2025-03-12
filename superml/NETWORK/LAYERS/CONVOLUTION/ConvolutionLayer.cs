@@ -1,5 +1,4 @@
 ﻿using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS;
-using superml.NETWORK.LAYERS.INTERFACES;
 using superml.NETWORK.OBJECTS;
 
 namespace superml.NETWORK.LAYERS.CONVOLUTION {

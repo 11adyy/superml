@@ -1,5 +1,4 @@
-﻿using superml.NETWORK.LAYERS.INTERFACES;
-using superml.NETWORK.OBJECTS;
+﻿using superml.NETWORK.OBJECTS;
 
 namespace superml.NETWORK.LAYERS.FLATTEN {
     public class FlattenLayer : ILayer {

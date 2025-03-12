@@ -1,5 +1,4 @@
 ﻿using superml.NETWORK.ACTIVATION;
-using superml.NETWORK.LAYERS.INTERFACES;
 using superml.NETWORK.OBJECTS;
 
 namespace superml.NETWORK.LAYERS.ACTIVATION {

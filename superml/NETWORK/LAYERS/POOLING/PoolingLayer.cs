@@ -1,5 +1,4 @@
-﻿using superml.NETWORK.LAYERS.INTERFACES;
-using superml.NETWORK.LAYERS.POOLING.SCRIPTS;
+﻿using superml.NETWORK.LAYERS.POOLING.SCRIPTS;
 using superml.NETWORK.OBJECTS;
 
 namespace superml.NETWORK.LAYERS.POOLING {

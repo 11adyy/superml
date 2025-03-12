@@ -1,4 +1,3 @@
-using superml.NETWORK.LAYERS.INTERFACES;
 using superml.NETWORK.LAYERS.SOFT_MAX.SCRIPTS;
 using superml.NETWORK.OBJECTS;
 
