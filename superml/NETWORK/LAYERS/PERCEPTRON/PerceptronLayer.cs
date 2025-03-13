@@ -1,5 +1,4 @@
 ﻿using superml.NETWORK.OBJECTS;
-using Vector = superml.NETWORK.OBJECTS.Vector;
 
 namespace superml.NETWORK.LAYERS.PERCEPTRON {
     public class PerceptronLayer : ILayer {

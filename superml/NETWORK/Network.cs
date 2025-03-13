@@ -1,4 +1,5 @@
-﻿using superml.NETWORK.LAYERS;
+﻿using superml.NETWORK.FIT.DATA_OBJECTS;
+using superml.NETWORK.LAYERS;
 using superml.NETWORK.MATH;
 using superml.NETWORK.OBJECTS;
 
@@ -39,5 +40,11 @@ namespace superml.NETWORK {
 
         public void LoadWeights(string weights) =>
             Layers.Aggregate(weights, (current, layer) => layer.LoadData(current));
+
+        public Network Fit(List<IData> dataSet, int epochs) =>
+            FIT.Fit.FitModel(this, dataSet, epochs);
+
+        public double Test(List<IData> dataSet) =>
+            FIT.Fit.TestModel(this, dataSet);
     }
 }
