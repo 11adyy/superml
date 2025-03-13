@@ -1,6 +1,6 @@
-using superml.NETWORK.FIT.DATA_OBJECTS;
+using superml.NETWORK.OBJECTS;
 
-namespace superml.NETWORK.OBJECTS.DATA_OBJECTS.ARRAY;
+namespace superml.NETWORK.FIT.DATA_OBJECTS.ARRAY;
 
 public class Array : IData {
     public Array(double[] data, double[] rightAnswer) {

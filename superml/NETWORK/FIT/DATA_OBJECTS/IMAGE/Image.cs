@@ -1,6 +1,6 @@
-using superml.NETWORK.FIT.DATA_OBJECTS;
+using superml.NETWORK.OBJECTS;
 
-namespace superml.NETWORK.OBJECTS.DATA_OBJECTS.IMAGE;
+namespace superml.NETWORK.FIT.DATA_OBJECTS.IMAGE;
 
 public class Image : IData {
     public Image(double[,,] image, double[] rightAnswer) {
