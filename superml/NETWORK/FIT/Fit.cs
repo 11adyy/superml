@@ -1,4 +1,4 @@
-using superml.NETWORK.FIT.DATA_OBJECTS;
+using superml.NETWORK.OBJECTS.DATA_OBJECTS;
 
 namespace superml.NETWORK.FIT;
 

@@ -1,5 +1,3 @@
-using superml.NETWORK.FIT.DATA_OBJECTS;
-
 namespace superml.NETWORK.OBJECTS.DATA_OBJECTS.IMAGE;
 
 public class Image : IData {
