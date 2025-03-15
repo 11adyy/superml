@@ -9,6 +9,10 @@
     <Description>Library for working with CNN and classic NN</Description>
     <PackageProjectUrl>https://github.com/11adyy/superml</PackageProjectUrl>
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+    <Version>1.0.1</Version>
+    <RepositoryUrl>https://github.com/11adyy/superml</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>CNN, FNN</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
