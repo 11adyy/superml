@@ -6,21 +6,17 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>superml</Title>
     <Authors>Noah Dylan Pelegrini</Authors>
-    <Description>Library for working with CNN and classic NN for classification data</Description>
+    <Description>Library for working with CNN and classic NN</Description>
     <PackageProjectUrl>https://github.com/11adyy/superml</PackageProjectUrl>
     <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
-    <Version>1.0.3</Version>
+    <Version>1.0.1</Version>
     <RepositoryUrl>https://github.com/11adyy/superml</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>CNN, FNN, Classification, Tensors</PackageTags>
-    <PackageIcon>packageIcon.png</PackageIcon>
+    <PackageTags>CNN, FNN</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="https:\raw.githubusercontent.com\11adyy\superml\master\README.md" />
-    <None Include="packageIcon.png" Pack="true" PackagePath="">
-      <Pack>True</Pack>
-    </None>
   </ItemGroup>
 
 </Project>
