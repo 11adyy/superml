@@ -1,5 +1,4 @@
-﻿using superml.NETWORK.OBJECTS;
-using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+﻿using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
 namespace superml.NETWORK.LAYERS {
     public interface ILayer {

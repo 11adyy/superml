@@ -1,5 +1,4 @@
 using superml.NETWORK.LAYERS.SOFT_MAX.SCRIPTS;
-using superml.NETWORK.OBJECTS;
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
 namespace superml.NETWORK.LAYERS.SOFT_MAX;
