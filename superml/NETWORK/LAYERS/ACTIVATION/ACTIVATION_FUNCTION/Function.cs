@@ -1,6 +1,6 @@
 using superml.NETWORK.OBJECTS;
 
-namespace superml.NETWORK.ACTIVATION {
+namespace superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION {
    public abstract class Function {
        protected abstract double Activate(double value);
 

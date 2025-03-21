@@ -20,6 +20,5 @@ namespace superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS {
             
             return newTensor;
         }
-
     }
 }
