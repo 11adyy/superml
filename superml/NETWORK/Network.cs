@@ -3,6 +3,7 @@ using superml.NETWORK.LAYERS;
 using superml.NETWORK.MATH;
 using superml.NETWORK.OBJECTS;
 using superml.NETWORK.OBJECTS.DATA_OBJECTS;
+using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
 namespace superml.NETWORK {
     public class Network {

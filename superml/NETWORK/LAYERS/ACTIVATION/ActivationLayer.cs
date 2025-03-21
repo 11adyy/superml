@@ -1,5 +1,6 @@
 ﻿using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION;
 using superml.NETWORK.OBJECTS;
+using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
 namespace superml.NETWORK.LAYERS.ACTIVATION {
     public class ActivationLayer : ILayer {
