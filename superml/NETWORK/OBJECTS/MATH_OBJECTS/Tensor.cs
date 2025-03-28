@@ -18,12 +18,12 @@
             }
         }
 
-        public Tensor Flip() {
+        public Filter Flip() {
             try {
                 foreach (var matrix in Channels)
                     matrix.Flip();
 
-                return new Tensor(Channels);
+                return new Filter(Channels);
             }
             catch (Exception) {
                 Console.WriteLine("Код ошибки: 2t");

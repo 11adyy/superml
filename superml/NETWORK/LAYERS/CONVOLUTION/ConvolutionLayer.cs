@@ -32,7 +32,7 @@ namespace superml.NETWORK.LAYERS.CONVOLUTION {
 
         private static Filter[] FlipFilters(Filter[] filters) {
             for (var i = 0; i < filters.Length; i++)
-                filters[i] = filters[i].Flip().AsFilter();
+                filters[i] = filters[i].Flip();
 
             return filters;
         }

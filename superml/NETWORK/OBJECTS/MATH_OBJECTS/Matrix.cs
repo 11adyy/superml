@@ -6,8 +6,8 @@
             Body    = body;
         }
 
-        public Matrix(IReadOnlyList<double> body) {
-            Rows    = body.Count;
+        public Matrix(double[] body) {
+            Rows    = body.Length;
             Columns = 1;
 
             Body = new double[Rows, Columns];
