@@ -1,9 +1,11 @@
 ﻿using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS;
+using superml.NETWORK.MATH.Initialization;
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
 namespace superml.NETWORK.LAYERS.CONVOLUTION {
     public class ConvolutionLayer : ILayer {
-        public ConvolutionLayer(int filters, int filterWeight, int filterHeight, int filterDepth, int stride) {
+        public ConvolutionLayer(int filters, int filterWeight, int filterHeight, int filterDepth, 
+            IWeightsInitialization weightsInitialization, int stride) {
             _backPropagate = true;
             Filters        = new Filter[filters];
             
@@ -18,8 +20,8 @@ namespace superml.NETWORK.LAYERS.CONVOLUTION {
             }
 
             foreach (var filter in Filters)
-                foreach (var matrix in filter.Channels)
-                    matrix.HeInitialization();
+                for (var i = 0; i < filter.Channels.Count; i++)
+                    filter.Channels[i] = weightsInitialization.Initialize(filter.Channels[i]);
 
             _stride = stride;
             Input   = new Tensor(new Matrix(0, 0));

@@ -1,14 +1,13 @@
-﻿using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+﻿using superml.NETWORK.MATH.Initialization;
+using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
 namespace superml.NETWORK.LAYERS.PERCEPTRON {
     public class PerceptronLayer : ILayer {
 
-        public PerceptronLayer(int size, int nextSize) {
+        public PerceptronLayer(int size, int nextSize, IWeightsInitialization weightsInitialization) {
             Neurons = new double[size];
             Bias    = new double[nextSize];
-
-            Weights = new Matrix(nextSize, size);
-            Weights.HeInitialization();
+            Weights = weightsInitialization.Initialize(new Matrix(nextSize, size));
 
             for (var i = 0; i < nextSize; i++)
                 Bias[i] = .001d;
