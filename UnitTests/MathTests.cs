@@ -1,5 +1,6 @@
 using superml.NETWORK.MATH.Initialization.HE;
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+using NUnit.Framework;
 
 namespace UnitTests;
 

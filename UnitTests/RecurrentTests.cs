@@ -9,6 +9,7 @@ using superml.NETWORK.LAYERS.RECURRENT.RECURRENCY_TYPE.OneToMany;
 using superml.NETWORK.LAYERS.SOFT_MAX;
 using superml.NETWORK.MATH.Initialization.HE;
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+using NUnit.Framework;
 
 namespace UnitTests;
 

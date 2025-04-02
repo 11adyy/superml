@@ -2,6 +2,7 @@ using superml.NETWORK.LAYERS.POOLING.SCRIPTS.AVERAGE;
 using superml.NETWORK.LAYERS.POOLING.SCRIPTS.MAX;
 using superml.NETWORK.LAYERS.POOLING.SCRIPTS.MIN;
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+using NUnit.Framework;
 
 namespace UnitTests;
 
