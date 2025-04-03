@@ -1,17 +1,17 @@
 ﻿using System.Drawing;
-
 using superml.DATA.IMAGE;
 using superml.DATA.IMAGE.REGIONS.SCRIPTS;
 using superml.NETWORK;
 
-namespace superml.MODELS.SCRIPTS.COMPUTER_VISION;
+namespace superml.MODELS.SCRIPTS.REGION_CONVOLUTION_NN;
 
-public static class ComputerVision {
-    public static Bitmap Calculate(Bitmap bitmap, Network model, double minValue, int convolutionX, int convolutionY) {
+public static class RegionConvolution {
+    public static Bitmap ForwardFeed(Bitmap bitmap, int cellSize, int stepsCount, Network model, 
+        double minValue, int convolutionX, int convolutionY) {
         var graphics = Graphics.FromImage(bitmap);
-        var pen = new Pen(Color.FromKnownColor(KnownColor.Black), 1);
+        var pen      = new Pen(Color.FromKnownColor(KnownColor.Black), 1);
         
-        var objects = RegionsMaker.GetRegions(bitmap, 50, 3);
+        var objects = RegionsMaker.GetRegions(bitmap, cellSize, stepsCount);
 
         foreach (var rectangle in objects) {
             var tensor = Parser.ImageToTensor(new Bitmap(bitmap.Clone(rectangle, bitmap.PixelFormat), 
