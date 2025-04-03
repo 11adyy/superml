@@ -1,4 +1,4 @@
-﻿using superml.NETWORK.DATA.CSV;
+﻿using superml.DATA.CSV;
 using superml.NETWORK.LAYERS;
 using superml.NETWORK.MATH;
 using superml.NETWORK.OBJECTS.DATA_OBJECTS;

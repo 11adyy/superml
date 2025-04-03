@@ -1,4 +1,4 @@
-namespace superml.NETWORK.DATA.CSV;
+namespace superml.DATA.CSV;
 
 public struct DataConfig {
     public int StartRow;

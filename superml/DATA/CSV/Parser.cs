@@ -2,7 +2,7 @@ using superml.NETWORK.OBJECTS.DATA_OBJECTS;
 using Microsoft.VisualBasic.FileIO;
 using Array = superml.NETWORK.OBJECTS.DATA_OBJECTS.ARRAY.Array;
 
-namespace superml.NETWORK.DATA.CSV;
+namespace superml.DATA.CSV;
 
 public static class Parser {
     public static List<IData> CsvToArrays(string path, DataConfig dataConfig) {
