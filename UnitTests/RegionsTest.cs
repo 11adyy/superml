@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
-using superml.DATA.IMAGE.REGIONS.SCRIPTS;
+using superml.SCRIPTS.REGION_CONVOLUTION.SCRIPTS;
 
 namespace UnitTests;
 

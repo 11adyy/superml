@@ -6,15 +6,15 @@ using superml.NETWORK.LAYERS.RECURRENT.RECURRENCY_TYPE.ManyToOne;
 using superml.NETWORK.LAYERS.SOFT_MAX;
 using superml.NETWORK.MATH.Initialization.Xavier;
 
-namespace superml.MODELS.TEXT_CLASSIFICATION;
+namespace superml.MODELS.VALUE_CLASSIFICATION;
 
-public static class TextClassification {
-    public static Network SimpleTextClassification = new Network(new List<ILayer> {
+public static class ValueClassification {
+    public static Network SimpleValueClassification = new Network(new List<ILayer> {
         new RecurrentLayer(new Tangensoid(), new ManyToOne(), 10, new XavierInitialization()),
         new SoftMaxLayer()
     });
     
-    public static Network DeepTextClassification = new Network(new List<ILayer> {
+    public static Network DeepValueClassification = new Network(new List<ILayer> {
         new RecurrentLayer(new Tangensoid(), new ManyToOne(), 100, new XavierInitialization()),
         new SoftMaxLayer()
     });

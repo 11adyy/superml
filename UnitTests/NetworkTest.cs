@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
-using superml.MODELS.NUMBER_CLASSIFICATION;
-using superml.MODELS.SCRIPTS.REGION_CONVOLUTION_NN;
+using superml.MODELS.IMAGE_CLASSIFICATION;
+using superml.SCRIPTS.REGION_CONVOLUTION;
 
 namespace UnitTests;
 
