@@ -5,6 +5,7 @@ using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.SIGMOID;
 using superml.NETWORK.LAYERS.FLATTEN;
 using superml.NETWORK.LAYERS.PERCEPTRON;
 using superml.NETWORK.MATH.Initialization.Xavier;
+using superml.NETWORK.MATH.LOSS_FUNCTION.ONE_BY_ONE;
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
 namespace UnitTests;
@@ -47,7 +48,7 @@ public class PerceptronTests {
             Console.WriteLine($"(BEFORE) Layer {layer + 1}:\nWeights:\n{layers[layer].GetData()}\n");
 
         model.ForwardFeed(testTensorData, AnswerType.Class);
-        model.BackPropagation(0, 1, .015d);
+        model.BackPropagation(0, 1, new OneByOne(), .015d);
         
         for (var layer = 0; layer < layers.Count; layer++) 
             Console.WriteLine($"(AFTER) Layer {layer + 1}:\nWeights:\n{layers[layer].GetData()}\n");

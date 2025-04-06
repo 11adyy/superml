@@ -1,6 +1,6 @@
 ﻿using superml.DATA;
 using superml.NETWORK.LAYERS;
-using superml.NETWORK.MATH;
+using superml.NETWORK.MATH.LOSS_FUNCTION;
 using superml.NETWORK.OBJECTS.DATA_OBJECTS;
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
@@ -21,8 +21,8 @@ namespace superml.NETWORK {
             };
         }
 
-        public void BackPropagation(double expectedAnswer, double expectedValue, double learningRate) {
-            var errorTensor = LossFunction.GetErrorTensor(Layers[^1].GetValues(), (int)expectedAnswer, expectedValue);
+        public void BackPropagation(double expectedAnswer, double expectedValue, LossFunction lossFunction, double learningRate) {
+            var errorTensor = lossFunction.GetErrorTensor(Layers[^1].GetValues(), (int)expectedAnswer, expectedValue);
                 for (var i = Layers.Count - 1; i >= 0; i--)
                     errorTensor = Layers[i].BackPropagate(errorTensor, learningRate);
         }
@@ -33,8 +33,8 @@ namespace superml.NETWORK {
         public void LoadWeights(string weights) =>
             Layers.Aggregate(weights, (current, layer) => layer.LoadData(current));
 
-        public void Fit(IData.Type type, string path, Config config, int epochs, double baseLearningRate) =>
-             Layers = MODEL.Fit.FitModel(this, Parse(type, path, config), epochs, baseLearningRate).Layers;
+        public void Fit(IData.Type type, string path, Config config, int epochs, LossFunction lossFunction, double baseLearningRate) =>
+             Layers = MODEL.Fit.FitModel(this, Parse(type, path, config), epochs, lossFunction, baseLearningRate).Layers;
         
         public double Test(IData.Type type, string path, Config config) =>
              MODEL.Test.TestModel(this, Parse(type, path, config));
