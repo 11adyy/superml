@@ -1,10 +1,11 @@
+using superml.DATA;
 using superml.DATA.CSV;
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
 namespace superml.NETWORK.OBJECTS.DATA_OBJECTS.ARRAY;
 
 public class Array : IData {
-    public Array(string[] data, DataConfig config) {
+    public Array(string[] data, Config config) {
         Body  = new double[config.InputColumnEnd - config.InputColumnStart];
         Right = new double[config.OutputColumnEnd - config.OutputColumnStart];
 
