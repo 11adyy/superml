@@ -2,6 +2,7 @@ using superml.NETWORK;
 using superml.NETWORK.LAYERS;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.DOUBLE_LEAKY_RELU;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.LEAKY_RELU;
+using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.SIGMOID;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.TANGENSOID;
 using superml.NETWORK.LAYERS.FLATTEN;
 using superml.NETWORK.LAYERS.PERCEPTRON;
@@ -83,22 +84,25 @@ public class RecurrentTests {
     
     [Test]
     public void BackPropagation_MTO() {
-        var testTensorData = new Tensor(new Matrix(new[] { .60, .35, .110 }));
+        var testTensorData = new Tensor(new Matrix(new[] { .60, .35, .11 }));
         var model = new Network(new List<ILayer> {
             new FlattenLayer(),
-            new RecurrentLayer(new LeakyReLu(), new ManyToOne(), 10, new HeInitialization()),
+            new RecurrentLayer(new Tangensoid(), new ManyToOne(), 10, new HeInitialization()),
             new PerceptronLayer(1)
         });
 
         Console.WriteLine();
         Console.WriteLine(model.ForwardFeed(testTensorData, AnswerType.Value));
         Console.WriteLine(model.GetWeights());
-        
-        for (var i = 0; i < 1000; i++) model.BackPropagation(0, 52, new OneByOne(), .15d);
+
+        var answer = 0d;
+        while (Math.Abs(answer - .52d) > .01d) {
+            model.BackPropagation(0, .52, new OneByOne(), .0015d);
+            answer = model.ForwardFeed(testTensorData, AnswerType.Value);
+        }
         
         Console.WriteLine();
         Console.WriteLine(model.ForwardFeed(testTensorData, AnswerType.Value));
-        Console.WriteLine(model.GetWeights());
     }
     
     [Test]
