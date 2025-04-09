@@ -3,6 +3,8 @@ using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
 namespace superml.NETWORK.LAYERS.ACTIVATION {
     public class ActivationLayer : ILayer {
+        /// <summary> Layer that perform tensor activation. </summary>
+        /// <param name="function"> Activation function. </param>
         public ActivationLayer(Function function) => Function = function;
 
         private Function Function { get; }
