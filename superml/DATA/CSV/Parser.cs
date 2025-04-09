@@ -1,6 +1,6 @@
-using superml.NETWORK.OBJECTS.DATA_OBJECTS;
+using superml.DATA.DATA_OBJECTS;
 using Microsoft.VisualBasic.FileIO;
-using Array = superml.NETWORK.OBJECTS.DATA_OBJECTS.ARRAY.Array;
+using Array = superml.DATA.DATA_OBJECTS.ARRAY.Array;
 
 namespace superml.DATA.CSV;
 

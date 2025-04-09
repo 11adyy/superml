@@ -1,6 +1,6 @@
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
-namespace superml.NETWORK.OBJECTS.DATA_OBJECTS;
+namespace superml.DATA.DATA_OBJECTS;
 
 public interface IData {
     public Tensor GetRight();

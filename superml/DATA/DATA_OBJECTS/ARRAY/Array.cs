@@ -1,8 +1,6 @@
-using superml.DATA;
-using superml.DATA.CSV;
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
-namespace superml.NETWORK.OBJECTS.DATA_OBJECTS.ARRAY;
+namespace superml.DATA.DATA_OBJECTS.ARRAY;
 
 public class Array : IData {
     public Array(string[] data, Config config) {

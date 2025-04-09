@@ -1,4 +1,4 @@
-using superml.NETWORK.OBJECTS.DATA_OBJECTS;
+using superml.DATA.DATA_OBJECTS;
 
 namespace superml.NETWORK.MODEL;
 

@@ -1,5 +1,5 @@
 using System.Drawing;
-using superml.NETWORK.OBJECTS.DATA_OBJECTS;
+using superml.DATA.DATA_OBJECTS;
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
 namespace superml.DATA.IMAGE;

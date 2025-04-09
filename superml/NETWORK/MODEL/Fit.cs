@@ -1,5 +1,5 @@
+using superml.DATA.DATA_OBJECTS;
 using superml.NETWORK.MATH.LOSS_FUNCTION;
-using superml.NETWORK.OBJECTS.DATA_OBJECTS;
 
 namespace superml.NETWORK.MODEL;
 
@@ -13,7 +13,7 @@ public static class Fit {
                 var expectedClass = datum.GetRight().GetMaxIndex();
                 var expectedValue = datum.GetRight().Flatten()[datum.GetRight().GetMaxIndex()];
 
-                if (predictedClass != expectedClass) {
+                if (Math.Abs(predictedClass - expectedClass) > .01) {
                     network.BackPropagation(expectedClass, expectedValue,
                         lossFunction, baseLearningRate * Math.Pow(.1, epoch));
                     continue;
