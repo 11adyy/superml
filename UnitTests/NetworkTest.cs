@@ -5,7 +5,9 @@ using superml.NETWORK;
 using superml.NETWORK.LAYERS;
 using superml.NETWORK.LAYERS.ACTIVATION;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.DOUBLE_LEAKY_RELU;
+using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.RELU;
 using superml.NETWORK.LAYERS.CONVOLUTION;
+using superml.NETWORK.LAYERS.DECONVOLUTION;
 using superml.NETWORK.LAYERS.FLATTEN;
 using superml.NETWORK.LAYERS.PERCEPTRON;
 using superml.NETWORK.LAYERS.POOLING;
@@ -14,6 +16,7 @@ using superml.NETWORK.LAYERS.SOFT_MAX;
 using superml.NETWORK.MATH.Initialization.HE;
 using superml.NETWORK.MATH.LOSS_FUNCTION.ONE_BY_ONE;
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+using superml.NETWORK.ROUGHEN;
 using superml.SCRIPTS.REGION_CONVOLUTION;
 
 namespace UnitTests;
@@ -49,5 +52,18 @@ public class NetworkTest {
         
         for (var i = 0; i < 100; i++)
             model.BackPropagation(1,1,new OneByOne(), 1);
+    }
+
+    [Test]
+    public void GeneratorTest() {
+        var model = new Network(new List<ILayer> {
+            new RoughenLayer(3,3,3),
+            new DeconvolutionLayer(16, 2,2,3, new HeInitialization(), 2),
+            new ActivationLayer(new ReLu()),
+            new DeconvolutionLayer(8, 6, 6, 16, new HeInitialization(), 2),
+            new ActivationLayer(new ReLu())
+        });
+        
+        Console.WriteLine(model.ForwardFeed(new Vector(27).FillRandom().AsTensor(3,3,3)).Channels[0].Print());
     }
 }
