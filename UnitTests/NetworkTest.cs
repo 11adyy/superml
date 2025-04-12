@@ -1,24 +1,31 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
+
 using superml.MODELS.IMAGE_CLASSIFICATION;
 using superml.NETWORK;
 using superml.NETWORK.LAYERS;
 using superml.NETWORK.LAYERS.ACTIVATION;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.DOUBLE_LEAKY_RELU;
+using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.LEAKY_RELU;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.RELU;
 using superml.NETWORK.LAYERS.CONVOLUTION;
 using superml.NETWORK.LAYERS.DATA;
 using superml.NETWORK.LAYERS.DECONVOLUTION;
 using superml.NETWORK.LAYERS.FLATTEN;
+using superml.NETWORK.LAYERS.NORMALIZATION;
+using superml.NETWORK.LAYERS.NORMALIZATION.NORMALIZATION_TYPE.ABS;
+using superml.NETWORK.LAYERS.NORMALIZATION.NORMALIZATION_TYPE.MIN_MAX;
 using superml.NETWORK.LAYERS.PERCEPTRON;
 using superml.NETWORK.LAYERS.POOLING;
 using superml.NETWORK.LAYERS.POOLING.SCRIPTS.MAX;
 using superml.NETWORK.LAYERS.ROUGHEN;
 using superml.NETWORK.LAYERS.SOFT_MAX;
 using superml.NETWORK.MATH.Initialization.HE;
+using superml.NETWORK.MATH.Initialization.Xavier;
 using superml.NETWORK.MATH.LOSS_FUNCTION.ONE_BY_ONE;
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 using superml.SCRIPTS.GENERATIVE_ADVERSARIAL_NETWORK;
+
 using superml.SCRIPTS.REGION_CONVOLUTION;
 
 namespace UnitTests;
@@ -79,14 +86,41 @@ public class NetworkTest {
 
     [Test]
     public void GanTest() {
-        string Path = @"C://Users//11adyy//Desktop//RCNN_TEST//";
+        const string path = @"C://Users//11adyy//Desktop//RCNN_TEST//";
 
-        var network = new GaNetwork(null, null);
-        network.DiscriminatorFitting(GaNetwork.LoadReal(Path + "test_faces", 28, 28),
-            network.GenerateFake(50, 144, 4, 4, 9), .0015d);
-        network.GeneratorFitting(1000, .15d);
+        var generator = new Network(new List<ILayer> {
+            new RoughenLayer(11,11,9),
+            new DeconvolutionLayer(6,10,10,9, new HeInitialization(), 2),
+            new ActivationLayer(new LeakyReLu()),
+            new DeconvolutionLayer(3,6,6,6, new HeInitialization(), 2),
+            new NormalizationLayer(new Abs()),
+            new NormalizationLayer(new MinMax())
+        });
+        
+        var discriminator = new Network(new List<ILayer> {
+            new ConvolutionLayer(3, 9,9,3, new HeInitialization(), 1),
+            new ActivationLayer(new LeakyReLu()),
+            new PoolingLayer(new MaxPooling(), 4),
+            new ConvolutionLayer(16, 9, 9, 3, new HeInitialization(), 1),
+            new ActivationLayer(new LeakyReLu()),
+            new PoolingLayer(new MaxPooling(), 2),
+            new FlattenLayer(),
+            new PerceptronLayer(144, 128, new HeInitialization()),
+            new ActivationLayer(new LeakyReLu()),
+            new PerceptronLayer(128, 2, new HeInitialization()),
+            new ActivationLayer(new LeakyReLu()),
+            new PerceptronLayer(2),
+            new SoftMaxLayer()
+        });
+        
+        var network = new GaNetwork(generator, discriminator, 11, 11, 9);
+        network.DiscriminatorFitting(1, GaNetwork.LoadReal(path + "faces", 64, 64),
+            network.GenerateFake(497), .005d);
+        network.GeneratorFitting(10, .005d);
 
-        network.GenerateTensor().Save(@$"C://Users//11adyy//Desktop//RCNN_TEST//answers//{Guid.NewGuid()}.png", ImageFormat.Png);
-        //Parser.TensorToImage(network.GenerateFake(1)[0]).Save(@$"C://Users//11adyy//Desktop//RCNN_TEST//answers//{Guid.NewGuid()}.png", ImageFormat.Png);
+        for (var i = 0; i < 1; i++)
+            network.GenerateBitmap().Save(@$"C://Users//11adyy//Desktop//RCNN_TEST//answers//{Guid.NewGuid()}.png", ImageFormat.Png);
+        //Console.WriteLine(network.GenerateTensor().Channels[0].Print());
+        //Console.WriteLine(Normalize(network.GenerateFake(1, 11, 11, 9)[0]).Channels[0].Print());
     }
 }
