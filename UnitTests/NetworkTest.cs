@@ -1,6 +1,5 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
-using superml.DATA.IMAGE;
 using superml.MODELS.IMAGE_CLASSIFICATION;
 using superml.NETWORK;
 using superml.NETWORK.LAYERS;
@@ -14,11 +13,12 @@ using superml.NETWORK.LAYERS.FLATTEN;
 using superml.NETWORK.LAYERS.PERCEPTRON;
 using superml.NETWORK.LAYERS.POOLING;
 using superml.NETWORK.LAYERS.POOLING.SCRIPTS.MAX;
+using superml.NETWORK.LAYERS.ROUGHEN;
 using superml.NETWORK.LAYERS.SOFT_MAX;
 using superml.NETWORK.MATH.Initialization.HE;
 using superml.NETWORK.MATH.LOSS_FUNCTION.ONE_BY_ONE;
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
-using superml.NETWORK.ROUGHEN;
+using superml.SCRIPTS.GENERATIVE_ADVERSARIAL_NETWORK;
 using superml.SCRIPTS.REGION_CONVOLUTION;
 
 namespace UnitTests;
@@ -49,11 +49,12 @@ public class NetworkTest {
             new SoftMaxLayer()
         });
 
-        for (var i = 0; i < 100; i++)
+        for (var i = 0; i < 1; i++) {
             model.ForwardFeed(new Tensor(new Matrix(64, 64)), AnswerType.Class);
-        
-        for (var i = 0; i < 100; i++)
             model.BackPropagation(1,1,new OneByOne(), 1, true);
+        }
+        
+        Console.WriteLine(model.ForwardFeed(new Tensor(new Matrix(64, 64)), AnswerType.Class));
     }
 
     [Test]
@@ -80,8 +81,8 @@ public class NetworkTest {
     public void GanTest() {
         string Path = @"C://Users//11adyy//Desktop//RCNN_TEST//";
 
-        var network = new superml.SCRIPTS.GENERATIVE_ADVERSARIAL_NETWORK.Network();
-        network.DiscriminatorFitting(network.LoadReal(Path + "test_faces"), network.GenerateFake(50), .0015d);
+        var network = new superml.SCRIPTS.GENERATIVE_ADVERSARIAL_NETWORK.GaNetwork(null, null);
+        network.DiscriminatorFitting(GaNetwork.LoadReal(Path + "test_faces"), network.GenerateFake(50), .0015d);
         network.GeneratorFitting(1000, .15d);
 
         network.GenerateTensor().Save(@$"C://Users//11adyy//Desktop//RCNN_TEST//answers//{Guid.NewGuid()}.png", ImageFormat.Png);

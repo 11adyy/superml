@@ -1,5 +1,4 @@
-﻿using System.Collections.Concurrent;
-using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+﻿using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
 namespace superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS {
     public static class Padding {
@@ -14,15 +13,14 @@ namespace superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS {
         }
 
         public static Tensor GetPadding(Tensor tensor, int paddingSize) {
-            var tempMatrices = new ConcurrentBag<Matrix>();
-            Parallel.For(0, tensor.Channels.Count, i => {
-                tempMatrices.Add(GetPadding(tensor.Channels[i],  paddingSize));
-            });
-                
             var newTensor = new Tensor(new List<Matrix>());
             for (var i = 0; i < tensor.Channels.Count; i++)
-                newTensor.Channels.Add(tempMatrices.ElementAt(i));
+                newTensor.Channels.Add(new Matrix(0, 0));
             
+            Parallel.For(0, tensor.Channels.Count, i => {
+                newTensor.Channels[i] = GetPadding(tensor.Channels[i],  paddingSize);
+            });
+
             return newTensor;
         }
     }

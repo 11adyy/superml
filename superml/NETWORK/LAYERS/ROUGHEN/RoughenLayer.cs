@@ -1,7 +1,6 @@
-using superml.NETWORK.LAYERS;
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
-namespace superml.NETWORK.ROUGHEN;
+namespace superml.NETWORK.LAYERS.ROUGHEN;
 
 public class RoughenLayer : ILayer {
     /// <summary> Layer that convert 1D vector-data tensor to multi-dimension data tensor. </summary>

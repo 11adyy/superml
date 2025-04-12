@@ -1,3 +1,4 @@
+using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS;
 using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 
 namespace UnitTests;
@@ -42,4 +43,5 @@ public class DeconvolutionTests {
         
         Console.WriteLine(answer.Channels[0].Print());
     }
+    
 }

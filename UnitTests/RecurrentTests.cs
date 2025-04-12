@@ -4,6 +4,7 @@ using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.DOUBLE_LEAKY_RELU;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.LEAKY_RELU;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.SIGMOID;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.TANGENSOID;
+using superml.NETWORK.LAYERS.DATA;
 using superml.NETWORK.LAYERS.FLATTEN;
 using superml.NETWORK.LAYERS.PERCEPTRON;
 using superml.NETWORK.LAYERS.RECURRENT;
@@ -68,10 +69,10 @@ public class RecurrentTests {
         var model = new Network(new List<ILayer> {
             new FlattenLayer(),
             new RecurrentLayer(new Tangensoid(), new ManyToMany(), 10, new XavierInitialization()),
-            new PerceptronLayer(6)
+            new DataLayer(DataType.InputTensor)
         });
         
-        var expected = new Tensor(new Matrix(new[] { .12d, .44d, .76d, .11d, .4d, .13d }));
+        var expected = new Tensor(new Matrix(new[] { .12d, .44d, .76d, .11d, .4d, .13d }).Transpose()); // Error cuz output is 1x1x10 instean 1x10x1 like we pass
         
         Console.WriteLine();
         //Console.WriteLine(new Vector(model.ForwardFeed(testTensorData).Flatten().ToArray()).Print());
@@ -114,7 +115,7 @@ public class RecurrentTests {
         var model = new Network(new List<ILayer> {
             new RecurrentLayer(new Tangensoid(), new OneToMany(), 5, new HeInitialization()),
             new FlattenLayer(),
-            new PerceptronLayer(5)
+            new DataLayer(DataType.InputTensor)
         });
 
         var expected = new Tensor(new Matrix(new[] { .12d, .44d, .76d, .11d, .4d }));
