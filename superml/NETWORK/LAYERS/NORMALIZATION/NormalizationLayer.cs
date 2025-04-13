@@ -4,6 +4,10 @@ using superml.NETWORK.OBJECTS.MATH_OBJECTS;
 namespace superml.NETWORK.LAYERS.NORMALIZATION;
 
 public class NormalizationLayer : ILayer {
+    /// <summary>
+    /// Layer that perform tensor normalization
+    /// </summary>
+    /// <param name="normalization"> Type of normalization </param>
     public NormalizationLayer(INormalization normalization) {
         Normalization = normalization;
     }
