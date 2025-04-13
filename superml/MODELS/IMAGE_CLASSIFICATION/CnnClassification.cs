@@ -3,6 +3,7 @@ using superml.NETWORK.LAYERS;
 using superml.NETWORK.LAYERS.ACTIVATION;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.DOUBLE_LEAKY_RELU;
 using superml.NETWORK.LAYERS.CONVOLUTION;
+using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS.PADDING.VALID;
 using superml.NETWORK.LAYERS.FLATTEN;
 using superml.NETWORK.LAYERS.PERCEPTRON;
 using superml.NETWORK.LAYERS.POOLING;
@@ -13,10 +14,10 @@ namespace superml.MODELS.IMAGE_CLASSIFICATION;
 
 public static class CnnClassification {
     public static Network SimpleConvolutionNetwork = new Network(new List<ILayer> {
-        new ConvolutionLayer(6, 5,5,3, new HeInitialization(), 1),
+        new ConvolutionLayer(6, 5,5,3, new HeInitialization(), 1, new ValidPadding()),
         new ActivationLayer(new DoubleLeakyReLu()),
         new PoolingLayer(new MaxPooling(), 2),
-        new ConvolutionLayer(16, 5, 5, 6, new HeInitialization(), 1),
+        new ConvolutionLayer(16, 5, 5, 6, new HeInitialization(), 1, new ValidPadding()),
         new ActivationLayer(new DoubleLeakyReLu()),
         new PoolingLayer(new MaxPooling(), 2),
         new FlattenLayer(),
@@ -28,9 +29,9 @@ public static class CnnClassification {
     });
     
     public static Network DeepConvolutionNetwork = new Network(new List<ILayer> {
-        new ConvolutionLayer(16, 5,5,3, new HeInitialization(), 1),
+        new ConvolutionLayer(16, 5,5,3, new HeInitialization(), 1, new ValidPadding()),
         new ActivationLayer(new DoubleLeakyReLu()),
-        new ConvolutionLayer(32, 5, 5, 16, new HeInitialization(), 1),
+        new ConvolutionLayer(32, 5, 5, 16, new HeInitialization(), 1, new ValidPadding()),
         new ActivationLayer(new DoubleLeakyReLu()),
         new FlattenLayer(),
         new PerceptronLayer(512, 256, new HeInitialization()),
