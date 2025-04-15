@@ -3,7 +3,7 @@
 using superml.DATA.IMAGE;
 using superml.NETWORK;
 using superml.NETWORK.MATH.LOSS_FUNCTION.ONE_BY_ONE;
-using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.SCRIPTS.GENERATIVE_ADVERSARIAL_NETWORK;
 

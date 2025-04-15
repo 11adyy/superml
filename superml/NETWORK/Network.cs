@@ -2,7 +2,7 @@
 using superml.DATA.DATA_OBJECTS;
 using superml.NETWORK.LAYERS;
 using superml.NETWORK.MATH.LOSS_FUNCTION;
-using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK {
     public class Network {

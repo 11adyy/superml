@@ -1,4 +1,4 @@
-﻿using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+﻿using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK.MATH.LOSS_FUNCTION {
     public abstract class LossFunction {

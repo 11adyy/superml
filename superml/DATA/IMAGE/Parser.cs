@@ -1,6 +1,6 @@
 using System.Drawing;
 using superml.DATA.DATA_OBJECTS;
-using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.DATA.IMAGE;
 

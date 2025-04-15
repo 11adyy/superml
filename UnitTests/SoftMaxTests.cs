@@ -1,5 +1,5 @@
 using superml.NETWORK.LAYERS.SOFT_MAX;
-using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+using superml.NETWORK.MATH.OBJECTS;
 using NUnit.Framework;
 
 namespace UnitTests;

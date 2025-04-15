@@ -1,7 +1,7 @@
 using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS;
 using superml.NETWORK.LAYERS.DECONVOLUTION.SCRIPTS;
 using superml.NETWORK.MATH.Initialization;
-using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK.LAYERS.DECONVOLUTION;
 

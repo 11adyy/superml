@@ -1,6 +1,6 @@
 using superml.NETWORK.MATH.LOSS_FUNCTION.ONE_BY_ONE;
 using superml.NETWORK.MATH.LOSS_FUNCTION.VALUE_BY_VALUE;
-using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+using superml.NETWORK.MATH.OBJECTS;
 
 namespace UnitTests;
 

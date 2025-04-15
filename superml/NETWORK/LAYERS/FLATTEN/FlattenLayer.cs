@@ -1,4 +1,4 @@
-﻿using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+﻿using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK.LAYERS.FLATTEN {
     /// <summary> Layer that convert multi-dimension data tensor to 1D vector-data tensor. </summary>

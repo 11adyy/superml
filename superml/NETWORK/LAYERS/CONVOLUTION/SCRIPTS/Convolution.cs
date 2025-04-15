@@ -1,5 +1,4 @@
-﻿using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS.PADDING.SAME;
-using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+﻿using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS {
     public static class Convolution {
@@ -43,8 +42,5 @@ namespace superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS {
             
             return newTensor;
         }
-        
-        public static Tensor BackConvolution(Tensor tensor, Filter[] filters, int stride) =>
-            GetConvolution(new SamePadding().GetPadding(tensor, filters[0].Channels[0].Rows - 1), filters, stride);
     }
 }

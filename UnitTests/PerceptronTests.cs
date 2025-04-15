@@ -6,7 +6,7 @@ using superml.NETWORK.LAYERS.FLATTEN;
 using superml.NETWORK.LAYERS.PERCEPTRON;
 using superml.NETWORK.MATH.Initialization.Xavier;
 using superml.NETWORK.MATH.LOSS_FUNCTION.ONE_BY_ONE;
-using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+using superml.NETWORK.MATH.OBJECTS;
 
 namespace UnitTests;
 

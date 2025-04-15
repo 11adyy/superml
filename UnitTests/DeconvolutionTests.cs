@@ -1,5 +1,5 @@
 using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS;
-using superml.NETWORK.OBJECTS.MATH_OBJECTS;
+using superml.NETWORK.MATH.OBJECTS;
 
 namespace UnitTests;
 
