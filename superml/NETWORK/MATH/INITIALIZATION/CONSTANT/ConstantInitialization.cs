@@ -3,6 +3,10 @@ using superml.NETWORK.MATH.OBJECTS;
 namespace superml.NETWORK.MATH.Initialization.CONSTANT;
 
 public class ConstantInitialization : IWeightsInitialization {
+    /// <summary>
+    /// Constant initialization is initialization where all weights sets by one value
+    /// </summary>
+    /// <param name="value"> Start value for all weights </param>
     public ConstantInitialization(double value) => Value = value;
         
     private double Value { get; }

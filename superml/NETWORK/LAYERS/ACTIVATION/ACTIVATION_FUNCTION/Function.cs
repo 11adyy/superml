@@ -3,7 +3,7 @@ using superml.NETWORK.MATH.OBJECTS;
 namespace superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION {
    public abstract class Function {
        protected abstract double Activate(double value);
-       
+
        public Tensor Activate(Tensor tensor) {
            Parallel.For(0, tensor.Channels.Count, channel => {
                for (var x = 0; x < tensor.Channels[channel].Rows; x++)
@@ -22,37 +22,36 @@ namespace superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION {
            return matrix;
        }
 
-       public double[] Activate(double[] array) {
-           for (var i = 0; i < array.Length; i++)
+       public Vector Activate(Vector array) {
+           for (var i = 0; i < array.Size; i++)
                array[i] = Activate(array[i]);
 
            return array;
        }
        
-       protected abstract double Derivation(double value, double referenceValue);       
+       protected abstract double Derivation(double value);       
        
-       public Tensor Derivation(Tensor tensor, Tensor referenceTensor) {
+       public Tensor Derivation(Tensor tensor) {
            Parallel.For(0, tensor.Channels.Count, channel => {
                for (var x = 0; x < tensor.Channels[channel].Rows; x++)
                    for (var y = 0; y < tensor.Channels[channel].Columns; y++)
-                       tensor.Channels[channel].Body[x, y] = Derivation(tensor.Channels[channel].Body[x, y], 
-                           referenceTensor.Channels[channel].Body[x,y]);
+                       tensor.Channels[channel].Body[x, y] = Derivation(tensor.Channels[channel].Body[x, y]);
            });
 
            return tensor;
        }
        
-       public Matrix Derivation(Matrix matrix, Matrix referenceMatrix) {
+       public Matrix Derivation(Matrix matrix) {
            for (var x = 0; x < matrix.Rows; x++)
                for (var y = 0; y < matrix.Columns; y++)
-                   matrix.Body[x, y] = Derivation(matrix.Body[x, y], referenceMatrix.Body[x, y]);
+                   matrix.Body[x, y] = Derivation(matrix.Body[x, y]);
            
            return matrix;
        }
        
-       public double[] Derivation(double[] array, double[] referenceArray) {
-           for (var i = 0; i < array.Length; i++)
-               array[i] = Derivation(array[i], referenceArray[i]);
+       public Vector Derivation(Vector array) {
+           for (var i = 0; i < array.Size; i++)
+               array[i] = Derivation(array[i]);
 
            return array;
        }

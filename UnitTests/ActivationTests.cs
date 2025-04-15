@@ -3,7 +3,6 @@ using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.DOUBLE_LEAKY_RELU;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.ELU;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.GAUSSIAN;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.GELU;
-using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.HYPERBOLIC_TANGENT;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.IDENTITY;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.LEAKY_RELU;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.PRELU;
@@ -12,6 +11,7 @@ using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.SELU;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.SIGMOID;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.SiLu;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.SOFT_PLUS;
+using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.TANGENSOID;
 using superml.NETWORK.MATH.OBJECTS;
 
 namespace UnitTests;
@@ -34,7 +34,7 @@ public class ActivationTests {
 
     [Test]
     public void Tangensoid() {
-        Console.WriteLine($"{new HyperbolicTangent().Activate(new Tensor(new Matrix(new []{-2d, -.5d, 0d, .1d, .6d, 1d, 2d}))).Channels[0].Print()}");
+        Console.WriteLine($"{new Tangensoid().Activate(new Tensor(new Matrix(new []{-2d, -.5d, 0d, .1d, .6d, 1d, 2d}))).Channels[0].Print()}");
     }
     
     [Test]

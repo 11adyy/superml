@@ -2,6 +2,9 @@ using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK.MATH.Initialization.Xavier;
 
+/// <summary>
+/// Xavier Initialization usually uses with Tangensoid function
+/// </summary>
 public class XavierInitialization : IWeightsInitialization {
     public Matrix Initialize(Matrix matrix) {
         for (var i = 0; i < matrix.Rows; i++)

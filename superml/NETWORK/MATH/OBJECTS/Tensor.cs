@@ -36,7 +36,8 @@
         private Tensor IncreaseChannels(int channels) {
             var tensor = new Tensor(Channels);
 
-            for (var i = 0; i < channels; i++) tensor.Channels.Add(Channels[^1]);
+            for (var i = 0; i < channels; i++) tensor.Channels.Add(
+                new Matrix(tensor.Channels[0].Rows, tensor.Channels[0].Columns));
 
             return tensor;
         }

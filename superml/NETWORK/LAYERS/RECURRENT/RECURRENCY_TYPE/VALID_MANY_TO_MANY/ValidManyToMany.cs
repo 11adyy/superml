@@ -1,8 +1,11 @@
 using superml.NETWORK.MATH.OBJECTS;
 
-namespace superml.NETWORK.LAYERS.RECURRENT.RECURRENCY_TYPE.ManyToOne;
+namespace superml.NETWORK.LAYERS.RECURRENT.RECURRENCY_TYPE.VALID_MANY_TO_MANY;
 
-public class ManyToOne : IRecurrentType {
+/// <summary>
+/// Type on RNN where model takes sequence and return another sequence with same size without duration during calculation
+/// </summary>
+public class ValidManyToMany : IRecurrentType {
     public Tensor GetNextLayer(RecurrentLayer layer, Tensor tensor) {
         var sequence = tensor.Flatten();
         
@@ -19,17 +22,22 @@ public class ManyToOne : IRecurrentType {
             layer.OutputNeurons.Add(Matrix.Multiply(layer.HiddenNeurons[^1], layer.OutputWeights) + layer.OutputBias);
         }
 
-        return new Tensor(layer.OutputNeurons[^1]);
+        return new Vector(new Tensor(layer.OutputNeurons).Flatten().ToArray())
+            .AsTensor(1, new Tensor(layer.OutputNeurons).Flatten().Count, 1);
     }
 
     public Tensor BackPropagate(RecurrentLayer layer, Tensor error, double learningRate) {
-        var currentError = error.Flatten()[0];
+        var sequence = error.Flatten();
         var nextHidden = new Matrix(0,0);
-        
+
+        learningRate /= sequence.Count;
+
         var transposedOutputWeights = layer.OutputWeights.Transpose();
         var transposedHiddenWeights = layer.HiddenWeights.Transpose();
         
         for (var step = layer.HiddenNeurons.Count - 1; step >= 0; step--) {
+            var currentError = sequence[step];
+            
             layer.OutputWeights -= Matrix.Multiply(layer.HiddenNeurons[step].Transpose(),
                 new Matrix(new[] { currentError })) * learningRate;
             layer.OutputBias -= currentError * learningRate;
@@ -39,7 +47,7 @@ public class ManyToOne : IRecurrentType {
                 nextHidden = outputGradient + Matrix.Multiply(nextHidden, transposedHiddenWeights);
             else nextHidden = outputGradient;
             
-            nextHidden = layer.Function.Derivation(layer.HiddenNeurons[step], layer.HiddenNeurons[step]) * nextHidden;
+            nextHidden = layer.Function.Derivation(layer.HiddenNeurons[step]) * nextHidden;
             if (step > 0) {
                 var hiddenWeightGradient = Matrix.Multiply(layer.HiddenNeurons[step - 1].Transpose(), nextHidden);
                 layer.HiddenWeights -= hiddenWeightGradient * learningRate;

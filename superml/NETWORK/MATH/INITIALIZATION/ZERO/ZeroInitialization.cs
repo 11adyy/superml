@@ -2,6 +2,9 @@ using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK.MATH.Initialization.ZERO;
 
+/// <summary>
+/// Initialization type where all weights sets to zero
+/// </summary>
 public class ZeroInitialization : IWeightsInitialization {
     public Matrix Initialize(Matrix matrix) {
         for (var i = 0; i < matrix.Rows; i++)

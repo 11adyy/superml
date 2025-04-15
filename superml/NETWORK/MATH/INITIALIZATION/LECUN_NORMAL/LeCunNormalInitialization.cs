@@ -2,6 +2,9 @@ using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK.MATH.Initialization.LECUN_NORMAL;
 
+/// <summary>
+/// Le Cun Normal Initialization usually uses with SeLU function
+/// </summary>
 public class LeCunNormalInitialization : IWeightsInitialization {
     public Matrix Initialize(Matrix matrix) {
         for (var i = 0; i < matrix.Rows; i++)

@@ -1,8 +1,7 @@
-﻿namespace superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.TANGENSOID;
+namespace superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.TANGENSOID {
+    public class Tangensoid : Function {
+        protected override double Activate(double value) => 2d / (1d + Math.Exp(-2d * value)) - 1d;
 
-public class Tangensoid : Function {
-    protected override double Activate(double value) => 2d / (1d + Math.Exp(-2d * value)) - 1d;
-
-    protected override double Derivation(double value, double referenceValue) => 
-        value * (4 * Math.Exp(-2 * referenceValue) / Math.Pow(1 + Math.Exp(-2 * referenceValue), 2));
+        protected override double Derivation(double value) => value * ( 1d / Math.Pow(Math.Cos(value), 2));
+    }    
 }

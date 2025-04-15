@@ -3,6 +3,10 @@ using superml.NETWORK.MATH.OBJECTS;
 namespace superml.NETWORK.MATH.Initialization.Xavier;
 
 public class NormalizedXavierInitialization : IWeightsInitialization {
+    /// <summary>
+    /// Normalized version of Xavier Initialization. Usually uses with Tangensoid function
+    /// </summary>
+    /// <param name="value"> Value of normalization </param>
     public NormalizedXavierInitialization(double value) => Value = value;
     
     private double Value { get; }
