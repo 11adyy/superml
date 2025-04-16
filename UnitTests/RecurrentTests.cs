@@ -1,9 +1,9 @@
 using superml.NETWORK;
 using superml.NETWORK.LAYERS;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.DOUBLE_LEAKY_RELU;
+using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.HYPERBOLIC_TANGENT;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.LEAKY_RELU;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.SIGMOID;
-using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.TANGENSOID;
 using superml.NETWORK.LAYERS.DATA;
 using superml.NETWORK.LAYERS.FLATTEN;
 using superml.NETWORK.LAYERS.PERCEPTRON;
@@ -14,8 +14,7 @@ using superml.NETWORK.LAYERS.RECURRENT.RECURRENCY_TYPE.OneToMany;
 using superml.NETWORK.LAYERS.SOFT_MAX;
 using superml.NETWORK.MATH.Initialization.HE;
 using superml.NETWORK.MATH.Initialization.Xavier;
-using superml.NETWORK.MATH.LOSS_FUNCTION.ONE_BY_ONE;
-using superml.NETWORK.MATH.LOSS_FUNCTION.VALUE_BY_VALUE;
+using superml.NETWORK.MATH.LOSS_FUNCTION.ERROR.VALUE_BY_VALUE;
 using superml.NETWORK.MATH.OBJECTS;
 
 namespace UnitTests;
@@ -68,7 +67,7 @@ public class RecurrentTests {
         var testTensorData = new Tensor(new Matrix(new[] { .7d, .1d, .3d, .21d, .14d, .77d }));
         var model = new Network(new List<ILayer> {
             new FlattenLayer(),
-            new RecurrentLayer(new Tangensoid(), new ManyToMany(), 10, new XavierInitialization()),
+            new RecurrentLayer(new HyperbolicTangent(), new ManyToMany(), 10, new XavierInitialization()),
             new DataLayer(DataType.InputTensor)
         });
         
@@ -90,7 +89,7 @@ public class RecurrentTests {
         var testTensorData = new Tensor(new Matrix(new[] { .60, .35, .11 }));
         var model = new Network(new List<ILayer> {
             new FlattenLayer(),
-            new RecurrentLayer(new Tangensoid(), new ManyToOne(), 10, new XavierInitialization()),
+            new RecurrentLayer(new HyperbolicTangent(), new ManyToOne(), 10, new XavierInitialization()),
             new PerceptronLayer(1)
         });
 
@@ -112,7 +111,7 @@ public class RecurrentTests {
     public void BackPropagation_OTM() {
         var testTensorData = new Tensor(new Matrix(new[] { .12d }));
         var model = new Network(new List<ILayer> {
-            new RecurrentLayer(new Tangensoid(), new OneToMany(), 5, new HeInitialization()),
+            new RecurrentLayer(new HyperbolicTangent(), new OneToMany(), 5, new HeInitialization()),
             new FlattenLayer(),
             new DataLayer(DataType.InputTensor)
         });
