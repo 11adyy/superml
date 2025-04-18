@@ -2,6 +2,9 @@ using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK.LAYERS.POOLING.SCRIPTS.MAX;
 
+/// <summary>
+/// Takes max value from area and puts in new matrix
+/// </summary>
 public class MaxPooling : Pooling {
     protected override Matrix Pool(Matrix matrix, int poolSize) {
         var outputWidth  = matrix.Rows / poolSize;

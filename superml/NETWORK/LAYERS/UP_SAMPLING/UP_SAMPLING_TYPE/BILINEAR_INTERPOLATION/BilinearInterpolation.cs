@@ -3,6 +3,9 @@ using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK.LAYERS.UP_SAMPLING.UP_SAMPLING_TYPE.BILINEAR_INTERPOLATION;
 
+/// <summary>
+/// Bilinear Interpolation up-sample method
+/// </summary>
 public class BilinearInterpolation : UpSampling {
     protected override Matrix UpSample(Matrix matrix, int scale) {
         var srcWidth  = matrix.Rows;
