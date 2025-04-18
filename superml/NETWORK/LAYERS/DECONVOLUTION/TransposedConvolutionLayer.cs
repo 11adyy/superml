@@ -1,5 +1,6 @@
 using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS;
 using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS.PADDING.CUSTOM;
+using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS.PADDING.EQUALS;
 using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS.PADDING.SAME;
 using superml.NETWORK.LAYERS.DECONVOLUTION.SCRIPTS;
 using superml.NETWORK.MATH.Initialization;
@@ -71,12 +72,8 @@ public class TransposedConvolutionLayer : ILayer {
 
         if (backPropagate)
             Parallel.For(0, Filters.Length, filter => {
-                for (var channel = 0; channel < Filters[filter].Channels.Count; channel++)
-                {
-                    Console.WriteLine(Convolution.GetConvolution(
-                        new SamePadding(extendedError).GetPadding(Input).Channels[filter],extendedError.Channels[filter],
-                        4, Filters[filter].Bias).Rows);
-                    Filters[filter].Channels[channel] -= TransposedConvolution.GetTransposedConvolution(
+                for (var channel = 0; channel < Filters[filter].Channels.Count; channel++) {
+                    Filters[filter].Channels[channel] -= Convolution.GetConvolution(
                         extendedError.Channels[filter], Input.Channels[filter],
                         _stride, Filters[filter].Bias) * learningRate;
                 }
