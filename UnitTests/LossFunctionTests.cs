@@ -1,4 +1,4 @@
-using superml.NETWORK.MATH.LOSS_FUNCTION.RATING.MSE;
+using superml.NETWORK.MATH.LOSS_FUNCTION.MSE;
 using superml.NETWORK.MATH.OBJECTS;
 
 namespace UnitTests;

@@ -12,7 +12,7 @@ using superml.NETWORK.LAYERS.RECURRENT.RECURRENCY_TYPE.VALID_MANY_TO_MANY;
 using superml.NETWORK.LAYERS.SOFT_MAX;
 using superml.NETWORK.MATH.Initialization.HE;
 using superml.NETWORK.MATH.Initialization.Xavier;
-using superml.NETWORK.MATH.LOSS_FUNCTION.RATING.MSE;
+using superml.NETWORK.MATH.LOSS_FUNCTION.MSE;
 using superml.NETWORK.MATH.OBJECTS;
 
 namespace UnitTests;
