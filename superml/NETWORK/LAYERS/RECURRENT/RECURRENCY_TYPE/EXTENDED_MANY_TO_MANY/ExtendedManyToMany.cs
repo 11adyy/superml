@@ -3,7 +3,7 @@ using superml.NETWORK.MATH.OBJECTS;
 namespace superml.NETWORK.LAYERS.RECURRENT.RECURRENCY_TYPE.EXTENDED_MANY_TO_MANY;
 
 /// <summary>
-/// Type on RNN where model takes sequence and return another sequence with same size with duration during calculation
+/// (Currently don`t work) Type on RNN where model takes sequence and return another sequence with same size with duration during calculation
 /// </summary>
 public class ExtendedManyToMany : IRecurrentType {
     public Tensor GetNextLayer(RecurrentLayer layer, Tensor tensor) {
