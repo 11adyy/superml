@@ -1,5 +1,4 @@
-﻿using superml.NETWORK.LAYERS.POOLING.SCRIPTS.BICUBIC;
-using superml.NETWORK.MATH.OBJECTS;
+﻿using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK.LAYERS.UP_SAMPLING.UP_SAMPLING_TYPE.BICUBIC_INTERPOLATE;
 
@@ -15,50 +14,52 @@ public class BicubicInterpolate : UpSampling {
         for (var y = 0; y < matrix.Columns; y++) {
             for (var x = 0; x < newWidth; x++) {
                 var xScaled = (double)x / scale;
-                var floorX = (int)Math.Floor(xScaled) - 1;
-                var secondX = floorX + 1;
-                var thirdX = floorX + 2;
-                var fourthX = floorX + 3;
+                var x0 = (int)Math.Floor(xScaled) - 1;
+                var x1 = x0 + 1;
+                var x2 = x0 + 2;
+                var x3 = x0 + 3;
                 
-                floorX = Math.Max(0, Math.Min(floorX, matrix.Rows - 1));
-                secondX = Math.Max(0, Math.Min(secondX, matrix.Rows - 1));
-                thirdX = Math.Max(0, Math.Min(thirdX, matrix.Rows - 1));
-                fourthX = Math.Max(0, Math.Min(fourthX, matrix.Rows - 1));
+                x0 = Math.Max(0, Math.Min(x0, matrix.Rows - 1));
+                x1 = Math.Max(0, Math.Min(x1, matrix.Rows - 1));
+                x2 = Math.Max(0, Math.Min(x2, matrix.Rows - 1));
+                x3 = Math.Max(0, Math.Min(x3, matrix.Rows - 1));
 
-                result.Body[x, y] = BicubicInterpolateValue(matrix.Body[floorX, y], matrix.Body[secondX, y], 
-                    matrix.Body[thirdX, y], matrix.Body[fourthX, y], xScaled - floorX);
+                result.Body[x, y] = BicubicInterpolateValue(matrix.Body[x0, y], matrix.Body[x1, y], 
+                    matrix.Body[x2, y], matrix.Body[x3, y], xScaled - x0);
             }
         }
 
         for (var x = 0; x < newWidth; x++) {
             for (var y = 0; y < newHeight; y++) {
                 var yScaled = (double)y / scale;
-                var floorY = (int)Math.Floor(yScaled) - 1;
-                var secondY = floorY + 1;
-                var thirdY = floorY + 2;
-                var fourthY = floorY + 3;
+                var y0 = (int)Math.Floor(yScaled) - 1;
+                var y1 = y0 + 1;
+                var y2 = y0 + 2;
+                var y3 = y0 + 3;
                 
-                floorY = Math.Max(0, Math.Min(floorY, matrix.Columns - 1));
-                secondY = Math.Max(0, Math.Min(secondY, matrix.Columns - 1));
-                thirdY = Math.Max(0, Math.Min(thirdY, matrix.Columns - 1));
-                fourthY = Math.Max(0, Math.Min(fourthY, matrix.Columns - 1));
+                y0 = Math.Max(0, Math.Min(y0, matrix.Columns - 1));
+                y1 = Math.Max(0, Math.Min(y1, matrix.Columns - 1));
+                y2 = Math.Max(0, Math.Min(y2, matrix.Columns - 1));
+                y3 = Math.Max(0, Math.Min(y3, matrix.Columns - 1));
                 
-                result.Body[x, y] = BicubicInterpolateValue(result.Body[x, floorY], result.Body[x, secondY], 
-                    result.Body[x, thirdY], result.Body[x, fourthY], yScaled - floorY);
+                result.Body[x, y] = BicubicInterpolateValue(result.Body[x, y0], result.Body[x, y1], 
+                    result.Body[x, y2], result.Body[x, y3], yScaled - y0);
             }
         }
 
         return result;
     }
     
-    private static double BicubicInterpolateValue(double firstValue, double secondValue, double thirdValue, double fourthValue, double x) {
-        var a0 = -.5d * firstValue + 1.5d * secondValue - 1.5d * thirdValue + .5d *fourthValue;
-        var a1 = firstValue - 2.5d * secondValue + 2d * thirdValue - .5d * fourthValue;
-        var a2 = -.5d * firstValue + .5d * thirdValue;
+    private static double BicubicInterpolateValue(double p0, double p1, double p2, double p3, double x) {
+        var a0 = -0.5*p0 + 1.5*p1 - 1.5*p2 + 0.5*p3;
+        var a1 = p0 - 2.5*p1 + 2*p2 - 0.5*p3;
+        var a2 = -0.5*p0 + 0.5*p2;
         
-        return a0*Math.Pow(x,3) + a1*Math.Pow(x,2) + a2*x + secondValue;
+        return a0*Math.Pow(x,3) + a1*Math.Pow(x,2) + a2*x + p1;
     }
-
-    protected override Matrix DownSample(Matrix matrix, int scale) =>
-        new BicubicPooling().Pool(new Tensor(matrix), scale).Channels[0];
+    
+    protected override Matrix DownSample(Matrix matrix, int scale)
+    {
+        throw new NotImplementedException();
+    }
 }
