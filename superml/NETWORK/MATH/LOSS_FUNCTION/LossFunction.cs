@@ -1,6 +1,6 @@
 ﻿using superml.NETWORK.MATH.OBJECTS;
 
-namespace superml.NETWORK.MATH.LOSS_FUNCTION.RATING;
+namespace superml.NETWORK.MATH.LOSS_FUNCTION;
 
 public abstract class LossFunction {
     protected static double Loss(double sum, int count) => 1d / count * sum;

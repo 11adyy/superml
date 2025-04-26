@@ -3,7 +3,7 @@ using superml.NETWORK.LAYERS.DECONVOLUTION.SCRIPTS;
 using superml.NETWORK.MATH.Initialization;
 using superml.NETWORK.MATH.OBJECTS;
 
-namespace superml.NETWORK.LAYERS.DECONVOLUTION;
+namespace superml.NETWORK.LAYERS.TRANSPOSED_CONVOLUTION;
 
 public class TransposedConvolutionLayer : ILayer {
     /// <summary> Layer that perform tensor deconvolution by filters and biases. </summary>

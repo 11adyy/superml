@@ -1,7 +1,7 @@
 ﻿using superml.DATA;
 using superml.DATA.DATA_OBJECTS;
 using superml.NETWORK.LAYERS;
-using superml.NETWORK.MATH.LOSS_FUNCTION.RATING;
+using superml.NETWORK.MATH.LOSS_FUNCTION;
 using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK {

@@ -1,5 +1,5 @@
 using superml.DATA.DATA_OBJECTS;
-using superml.NETWORK.MATH.LOSS_FUNCTION.RATING;
+using superml.NETWORK.MATH.LOSS_FUNCTION;
 
 namespace superml.NETWORK.MODEL;
 

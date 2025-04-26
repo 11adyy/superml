@@ -1,5 +1,4 @@
-﻿using superml.NETWORK.MATH.LOSS_FUNCTION.RATING;
-using superml.NETWORK.MATH.OBJECTS;
+﻿using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK.MATH.LOSS_FUNCTION.MSE;
 
