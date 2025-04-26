@@ -1,6 +1,6 @@
 using superml.NETWORK.MATH.OBJECTS;
 
-namespace superml.NETWORK.LAYERS.DECONVOLUTION.SCRIPTS;
+namespace superml.NETWORK.LAYERS.TRANSPOSED_CONVOLUTION.SCRIPTS;
 
 public static class TransposedConvolution {
     public static Matrix GetTransposedConvolution(Matrix matrix, Matrix filter, int stride, double bias) {
