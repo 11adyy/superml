@@ -1,6 +1,7 @@
 ﻿using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS;
 using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS.PADDING;
 using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS.PADDING.SAME;
+using superml.NETWORK.LAYERS.TRANSPOSED_CONVOLUTION.SCRIPTS;
 using superml.NETWORK.MATH.Initialization;
 using superml.NETWORK.MATH.OBJECTS;
 
@@ -113,7 +114,7 @@ namespace superml.NETWORK.LAYERS.CONVOLUTION {
                     Filters[filter].Bias -= error.Channels[filter].Sum() * learningRate;
                 });
 
-            return Convolution.GetConvolution(new SamePadding(originalFilters[0]).GetPadding(error), 
+            return TransposedConvolution.GetTransposedConvolution(_padding.GetPadding(error), 
                 FlipFilters(GetFiltersWithoutBiases(originalFilters)), _stride);
         }
 
