@@ -1,6 +1,9 @@
 ﻿using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK.LAYERS {
+    /// <summary>
+    /// ILayer interface that include methods for layers
+    /// </summary>
     public interface ILayer {
         public Tensor GetNextLayer(Tensor tensor);
         public Tensor BackPropagate(Tensor error, double learningRate, bool backPropagate);
