@@ -3,9 +3,11 @@ using superml.NETWORK.LAYERS;
 using superml.NETWORK.LAYERS.ACTIVATION;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.DOUBLE_LEAKY_RELU;
 using superml.NETWORK.LAYERS.CONVOLUTION;
+using superml.NETWORK.LAYERS.CONVOLUTION.ADAM.DEFAULT_CONVOLUTION;
 using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS.PADDING.VALID;
 using superml.NETWORK.LAYERS.FLATTEN;
 using superml.NETWORK.LAYERS.PERCEPTRON;
+using superml.NETWORK.LAYERS.PERCEPTRON.ADAM.DEFAULT_PERCEPTRON;
 using superml.NETWORK.LAYERS.POOLING;
 using superml.NETWORK.LAYERS.POOLING.SCRIPTS.MAX;
 using superml.NETWORK.MATH.Initialization.HE;
@@ -17,16 +19,16 @@ public static class CnnClassification {
     /// CNN model for MNIST data set. Takes 28x28 tensor.
     /// </summary>
     public static Network SimpleConvolutionNetwork = new Network(new List<ILayer> {
-        new ConvolutionLayer(6, 5,5,3, new HeInitialization(), 1, new ValidPadding()),
+        new ConvolutionLayer(6, 5,5,3, new HeInitialization(), 1, new ValidPadding(), new NoConvolutionOptimization()),
         new ActivationLayer(new DoubleLeakyReLu()),
         new PoolingLayer(new MaxPooling(), 2),
-        new ConvolutionLayer(16, 5, 5, 6, new HeInitialization(), 1, new ValidPadding()),
+        new ConvolutionLayer(16, 5, 5, 6, new HeInitialization(), 1, new ValidPadding(), new NoConvolutionOptimization()),
         new ActivationLayer(new DoubleLeakyReLu()),
         new PoolingLayer(new MaxPooling(), 2),
         new FlattenLayer(),
-        //new PerceptronLayer(256, 128, new HeInitialization()),
+        new PerceptronLayer(256, 128, new HeInitialization(), new NoPerceptronOptimization()),
         new ActivationLayer(new DoubleLeakyReLu()),
-        //new PerceptronLayer(128, 10, new HeInitialization()),
+        new PerceptronLayer(128, 10, new HeInitialization(), new NoPerceptronOptimization()),
         new ActivationLayer(new DoubleLeakyReLu()),
         new PerceptronLayer(10)
     });
@@ -35,16 +37,16 @@ public static class CnnClassification {
     /// Big CNN model for MNIST data set. Takes 28x28 tensor.
     /// </summary>
     public static Network DeepConvolutionNetwork = new Network(new List<ILayer> {
-        new ConvolutionLayer(16, 5,5,3, new HeInitialization(), 1, new ValidPadding()),
+        new ConvolutionLayer(16, 5,5,3, new HeInitialization(), 1, new ValidPadding(), new NoConvolutionOptimization()),
         new ActivationLayer(new DoubleLeakyReLu()),
-        new ConvolutionLayer(32, 5, 5, 16, new HeInitialization(), 1, new ValidPadding()),
+        new ConvolutionLayer(32, 5, 5, 16, new HeInitialization(), 1, new ValidPadding(), new NoConvolutionOptimization()),
         new ActivationLayer(new DoubleLeakyReLu()),
         new FlattenLayer(),
-        //new PerceptronLayer(512, 256, new HeInitialization()),
+        new PerceptronLayer(512, 256, new HeInitialization(), new NoPerceptronOptimization()),
         new ActivationLayer(new DoubleLeakyReLu()),
-        //new PerceptronLayer(256, 128, new HeInitialization()),
+        new PerceptronLayer(256, 128, new HeInitialization(), new NoPerceptronOptimization()),
         new ActivationLayer(new DoubleLeakyReLu()),
-        //new PerceptronLayer(128, 10, new HeInitialization()),
+        new PerceptronLayer(128, 10, new HeInitialization(), new NoPerceptronOptimization()),
         new ActivationLayer(new DoubleLeakyReLu()),
         new PerceptronLayer(10)
     });
