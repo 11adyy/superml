@@ -1,8 +1,6 @@
 ﻿using superml.NETWORK.LAYERS.CONVOLUTION.ADAM;
 using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS;
 using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS.PADDING;
-using superml.NETWORK.LAYERS.CONVOLUTION.SCRIPTS.PADDING.SAME;
-using superml.NETWORK.LAYERS.TRANSPOSED_CONVOLUTION.SCRIPTS;
 using superml.NETWORK.MATH.Initialization;
 using superml.NETWORK.MATH.OBJECTS;
 
@@ -79,20 +77,6 @@ namespace superml.NETWORK.LAYERS.CONVOLUTION {
         private Filter[] Filters { get; }
         private Tensor Input { get; set; }
         private IConvolutionOptimization ConvolutionOptimization { get; }
-
-        private static Filter[] FlipFilters(Filter[] filters) {
-            for (var i = 0; i < filters.Length; i++)
-                filters[i] = filters[i].Flip().AsFilter();
-
-            return filters;
-        }
-
-        private static Filter[] GetFiltersWithoutBiases(Filter[] filters) {
-            for (var i = 0; i < filters.Length; i++)
-                filters[i] = new Filter(filters[i].Channels);
-
-            return filters;
-        }
 
         public Tensor GetValues() => Input;
 

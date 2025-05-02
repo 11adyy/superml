@@ -3,8 +3,10 @@ using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.DOUBLE_LEAKY_RELU;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.ELU;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.GAUSSIAN;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.GELU;
+using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.HARD_SIGMOID;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.HYPERBOLIC_TANGENT;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.IDENTITY;
+using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.LEAKY_HARD_SIGMOID;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.LEAKY_RELU;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.PRELU;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.RELU;
@@ -12,6 +14,8 @@ using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.SELU;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.SIGMOID;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.SiLu;
 using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.SOFT_PLUS;
+using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.SWISH;
+using superml.NETWORK.LAYERS.ACTIVATION.ACTIVATION_FUNCTION.TANGENSOID;
 using superml.NETWORK.MATH.OBJECTS;
 
 namespace UnitTests;
@@ -28,13 +32,28 @@ public class ActivationTests {
     }
 
     [Test]
+    public void HardSigmoid() {
+        Console.WriteLine($"{new HardSigmoid().Activate(new Tensor(new Matrix(new []{-2d, -.5d, 0d, .1d, .6d, 1d, 2d}))).Channels[0].Print()}");
+    }
+    
+    [Test]
+    public void LeakyHardSigmoid() {
+        Console.WriteLine($"{new LeakyHardSigmoid().Activate(new Tensor(new Matrix(new []{-2d, -.5d, 0d, .1d, .6d, 1d, 2d}))).Channels[0].Print()}");
+    }
+    
+    [Test]
     public void ReLu() {
         Console.WriteLine($"{new ReLu().Activate(new Tensor(new Matrix(new []{-2d, -.5d, 0d, .1d, .6d, 1d, 2d}))).Channels[0].Print()}");
     }
 
     [Test]
-    public void Tangensoid() {
+    public void HyperbolicTangent() {
         Console.WriteLine($"{new HyperbolicTangent().Activate(new Tensor(new Matrix(new []{-2d, -.5d, 0d, .1d, .6d, 1d, 2d}))).Channels[0].Print()}");
+    }
+    
+    [Test]
+    public void Tangensoid() {
+        Console.WriteLine($"{new Tangensoid().Activate(new Tensor(new Matrix(new []{-2d, -.5d, 0d, .1d, .6d, 1d, 2d}))).Channels[0].Print()}");
     }
     
     [Test]
@@ -85,5 +104,10 @@ public class ActivationTests {
     [Test]
     public void Softplus() {
         Console.WriteLine($"{new SoftPlus().Activate(new Tensor(new Matrix(new []{-2d, -.5d, 0d, .1d, .6d, 1d, 2d}))).Channels[0].Print()}");
+    }
+    
+    [Test]
+    public void Swish() {
+        Console.WriteLine($"{new Swish(0, 1).Activate(new Tensor(new Matrix(new []{-2d, -.5d, 0d, .1d, .6d, 1d, 2d}))).Channels[0].Print()}");
     }
 }
