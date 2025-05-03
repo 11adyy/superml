@@ -35,6 +35,7 @@ using superml.NETWORK.MATH.Initialization.HE;
 using superml.NETWORK.MATH.LOSS_FUNCTION.MSE;
 using superml.NETWORK.MATH.OBJECTS;
 using superml.SCRIPTS.GENERATIVE_ADVERSARIAL_NETWORK;
+using superml.SCRIPTS.GENERATIVE_ADVERSARIAL_NETWORK.IMAGES;
 using superml.SCRIPTS.REGION_CONVOLUTION;
 
 namespace UnitTests;
@@ -131,8 +132,8 @@ public class NetworkTest {
         //Console.WriteLine(a);
         //Console.WriteLine(b);
         
-        var network = new GaNetwork(generator, discriminator);
-        network.DiscriminatorFitting(1, GaNetwork.LoadReal(path + "faces", 40, 40), .05d);
+        var network = new ImageGaNetwork(generator, discriminator);
+        network.DiscriminatorFitting(1, ImageGaNetwork.LoadReal(path + "faces", 40, 40), .05d);
         //
         //File.WriteAllText(@$"C://Users//11adyy//Desktop//RCNN_TEST//answers//{Guid.NewGuid()}.txt", network.GetDiscriminator().GetWeights());
         

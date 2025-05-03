@@ -5,17 +5,17 @@ using superml.NETWORK;
 using superml.NETWORK.MATH.LOSS_FUNCTION.MAE;
 using superml.NETWORK.MATH.OBJECTS;
 
-namespace superml.SCRIPTS.GENERATIVE_ADVERSARIAL_NETWORK;
+namespace superml.SCRIPTS.GENERATIVE_ADVERSARIAL_NETWORK.IMAGES;
 
 
-public class GaNetwork {
+public class ImageGaNetwork {
     /// <summary>
     /// Generative Adversarial model 
     /// </summary>
     /// <param name="generator"> Generator model </param>
     /// <param name="discriminator"> Discriminator model </param>
-    public GaNetwork(Network generator, Network discriminator) {
-        Generator = generator;
+    public ImageGaNetwork(Network generator, Network discriminator) {
+        Generator     = generator;
         Discriminator = discriminator;
     }
 
@@ -38,7 +38,7 @@ public class GaNetwork {
     /// <param name="directoryPath"> Path for directory with images </param>
     /// <param name="resizeX"> End size of bitmap </param>
     /// <param name="resizeY"> End size of bitmap </param>
-    /// <returns></returns>
+    /// <returns> Data set of real bitmaps </returns>
     public static List<Tensor> LoadReal(string directoryPath, int resizeX, int resizeY) {
         var files = Directory.GetFiles(directoryPath);
         return files.Select(file => Parser.ImageToTensor
