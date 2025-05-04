@@ -28,12 +28,14 @@ using superml.NETWORK.LAYERS.POOLING.SCRIPTS.MAX;
 using superml.NETWORK.LAYERS.ROUGHEN;
 using superml.NETWORK.LAYERS.SOFT_MAX;
 using superml.NETWORK.LAYERS.TRANSPOSED_CONVOLUTION;
+using superml.NETWORK.LAYERS.TRANSPOSED_CONVOLUTION.ADAM.DEFAULT_TRANSPOSED_CONVOLUTION;
 using superml.NETWORK.LAYERS.UP_SAMPLING;
 using superml.NETWORK.LAYERS.UP_SAMPLING.UP_SAMPLING_TYPE.NEAREST_NEIGHBOR;
 using superml.NETWORK.MATH.Initialization.HE;
 using superml.NETWORK.MATH.LOSS_FUNCTION.MSE;
 using superml.NETWORK.MATH.OBJECTS;
 using superml.SCRIPTS.GENERATIVE_ADVERSARIAL_NETWORK;
+using superml.SCRIPTS.GENERATIVE_ADVERSARIAL_NETWORK.IMAGES;
 using superml.SCRIPTS.REGION_CONVOLUTION;
 
 namespace UnitTests;
@@ -76,13 +78,13 @@ public class NetworkTest {
     public void GeneratorTest() {
         var model = new Network(new List<ILayer> {
             new RoughenLayer(3,3,32),
-            new TransposedConvolutionLayer(16, 2,2,32, new HeInitialization(), 2),
+            new TransposedConvolutionLayer(16, 2,2,32, new HeInitialization(), 2, new NoTransposedConvolutionOptimization()),
             new ActivationLayer(new ReLu()),
-            new TransposedConvolutionLayer(8, 6, 6, 16, new HeInitialization(), 2),
+            new TransposedConvolutionLayer(8, 6, 6, 16, new HeInitialization(), 2, new NoTransposedConvolutionOptimization()),
             new ActivationLayer(new ReLu()),
-            new TransposedConvolutionLayer(4, 6, 6, 8, new HeInitialization(), 2),
+            new TransposedConvolutionLayer(4, 6, 6, 8, new HeInitialization(), 2, new NoTransposedConvolutionOptimization()),
             new ActivationLayer(new ReLu()),
-            new TransposedConvolutionLayer(3, 6, 6, 4, new HeInitialization(), 2),
+            new TransposedConvolutionLayer(3, 6, 6, 4, new HeInitialization(), 2, new NoTransposedConvolutionOptimization()),
             new ActivationLayer(new ReLu()),
             new DataLayer(DataType.InputTensor)
         });
@@ -130,8 +132,8 @@ public class NetworkTest {
         //Console.WriteLine(a);
         //Console.WriteLine(b);
         
-        var network = new GaNetwork(generator, discriminator);
-        network.DiscriminatorFitting(1, GaNetwork.LoadReal(path + "faces", 40, 40), .05d);
+        var network = new ImageGaNetwork(generator, discriminator);
+        network.DiscriminatorFitting(1, ImageGaNetwork.LoadReal(path + "faces", 40, 40), .05d);
         //
         //File.WriteAllText(@$"C://Users//11adyy//Desktop//RCNN_TEST//answers//{Guid.NewGuid()}.txt", network.GetDiscriminator().GetWeights());
         
@@ -163,11 +165,11 @@ public class NetworkTest {
         var generator1 = new Network(new List<ILayer> {
             new NoiseLayer(144, new GaussianNoise()),
             new RoughenLayer(4,4,9),
-            new TransposedConvolutionLayer(6,4,4,9, new HeInitialization(), 1),
+            new TransposedConvolutionLayer(6,4,4,9, new HeInitialization(), 1, new NoTransposedConvolutionOptimization()),
             new ActivationLayer(new PReLu(.2d)),
-            new TransposedConvolutionLayer(3,12,12,6, new HeInitialization(), 1),
+            new TransposedConvolutionLayer(3,12,12,6, new HeInitialization(), 1, new NoTransposedConvolutionOptimization()),
             new ActivationLayer(new PReLu(.2d)),
-            new TransposedConvolutionLayer(3,23,23,6, new HeInitialization(), 1),
+            new TransposedConvolutionLayer(3,23,23,6, new HeInitialization(), 1, new NoTransposedConvolutionOptimization()),
             new ActivationLayer(new Sigmoid()),
             new NormalizationLayer(new Abs()),
             new NormalizationLayer(new MinMax(1)),
