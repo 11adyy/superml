@@ -16,7 +16,7 @@ namespace superml.NETWORK.LAYERS.ACTIVATION {
 
         public Tensor GetNextLayer(Tensor tensor) {
             Input = Function.Activate(tensor);
-            return new Tensor(new List<Matrix>(Input.Channels));
+            return Input.Copy();
         }
 
         public Tensor BackPropagate(Tensor error, double learningRate, bool backPropagate) => 
