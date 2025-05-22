@@ -1,4 +1,5 @@
 using superml.NETWORK.MATH.LOSS_FUNCTION.REGULARIZATION;
+using superml.NETWORK.MATH.LOSS_FUNCTION.REGULARIZATION.NO_REGULARIZATION;
 using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK.MATH.LOSS_FUNCTION.CELl;
@@ -8,7 +9,7 @@ public class CeLl : LossFunction {
         Regularization = regularization;
         
     public CeLl() =>
-        Regularization = null!;
+        Regularization = new NoRegularization();
     
     private Regularization Regularization { get; }
     

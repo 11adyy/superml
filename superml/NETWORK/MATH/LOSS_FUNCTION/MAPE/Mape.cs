@@ -1,4 +1,5 @@
 ﻿using superml.NETWORK.MATH.LOSS_FUNCTION.REGULARIZATION;
+using superml.NETWORK.MATH.LOSS_FUNCTION.REGULARIZATION.NO_REGULARIZATION;
 using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK.MATH.LOSS_FUNCTION.MAPE;
@@ -11,7 +12,7 @@ public class Mape : LossFunction {
         Regularization = regularization;
         
     public Mape() =>
-        Regularization = null!;
+        Regularization = new NoRegularization();
     
     private Regularization Regularization { get; }
     
