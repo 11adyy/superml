@@ -1,4 +1,5 @@
-﻿using superml.NETWORK.MATH.OBJECTS;
+﻿using superml.NETWORK.MATH.LOSS_FUNCTION.REGULARIZATION;
+using superml.NETWORK.MATH.OBJECTS;
 
 namespace superml.NETWORK.MATH.LOSS_FUNCTION;
 

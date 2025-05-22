@@ -8,6 +8,7 @@ using superml.NETWORK.LAYERS.PERCEPTRON;
 using superml.NETWORK.MATH.Initialization.HE;
 using superml.NETWORK.MATH.Initialization.Xavier;
 using superml.NETWORK.MATH.LOSS_FUNCTION.MSE;
+using superml.NETWORK.MATH.LOSS_FUNCTION.REGULARIZATION.L1;
 using superml.NETWORK.MATH.OBJECTS;
 
 namespace UnitTests;
