@@ -1,7 +1,8 @@
 using System.Numerics;
 using superml.NETWORK.MATH.OBJECTS;
+using superml.SCRIPTS.GENERATIVE_ADVERSARIAL_NETWORK.SOUNDS.SCRIPTS;
 
-namespace superml.SCRIPTS.GENERATIVE_ADVERSARIAL_NETWORK.SOUNDS.SCRIPTS;
+namespace superml.DATA.SOUND;
 
 public static class SoundConverter {
     public static Matrix Convert(string path, int sampleRate = 44100, int frameSize = 1024, int hopSize = 512,
